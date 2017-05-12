@@ -1,0 +1,27 @@
+{
+    "name": "WhatSound"
+    , "version": "1.0.0"
+    , "private": true
+    , "scripts": {
+        "start": "node app.js"
+    }
+    , "dependencies": {
+        "express": "4.13.x"
+        , "ejs": "2.4.x"
+        , "cloudant": "1.4.x"
+        , "body-parser": "1.14.x"
+        , "method-override": "2.3.x"
+        , "morgan": "1.6.x"
+        , "errorhandler": "1.4.x"
+        , "connect-multiparty": "2.0.x"
+        , "watson-developer-cloud": "2.27.1"
+        , "cfenv": "^1.0.3"
+        , "dotenv": "*",
+        "chrono-node":"*",
+        "express": "latest"
+    }
+    , "repository": {}
+    , "engines": {
+        "node": "4.x"
+    }
+}

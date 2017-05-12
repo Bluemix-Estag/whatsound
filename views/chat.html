@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WhatSound</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/scripts/chat.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="/style/animate.css">
+	<link rel="stylesheet" href="/style/style.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="/style/chat.css"/> -->
+</head>
+<body>
+	<header></header>
+
+	<section id="container">
+
+
+  <div id="video-background">
+    <video muted="" data-widget="videolooper" loop="" autoplay="">
+      <source src="./videos/music_adk.mp4" type="video/mp4" />
+    </video>
+    <iframe id="clip" src="" frameborder="0" allowfullscreen="false"></iframe>
+  </div>
+
+  <div id="actions"></div>
+
+  <div id="chat">
+    <div id="chat-body"></div>
+    <input id="message" class="animated fadeIn" type="text" placeholder="Digite sua mensagem aqui" onkeypress="return newEvent(event)" />
+  </div>
+
+  <!--
+  <div class="chat-popup" id="chat-popup">
+      <div class="chat-header" >Chat with Watson!</div>
+      <div class="chat-body" id="chat-body">
+<!--                <div class="chat-date"><span>Today, 2:22 PM</span></div>--><!--
+      </div>
+      <div class="chat-footer">
+          <input type="text" id="chatInput" placeholder="Type a message.." onkeypress="return newEvent(event)"/>
+          <a href="javascript:;" class="send-btn"></a>
+      </div>
+  </div>
+-->
+</section>
+
+<footer>Desenvolvido por IBM Bluemix Estag © 2017</footer>
+
+
+	<script type="text/javascript" src="/scripts/util.js"></script>
+	<script type="text/javascript" src="/scripts/index.js"></script>
+</body>
+</html>

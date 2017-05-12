@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WhatSound</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<link rel="stylesheet" href="/style/animate.css">
+	<link rel="stylesheet" href="/style/style.css" />
+</head>
+<body>
+	<header></header>
+
+	<section id="container">
+
+
+  <div id="video-background">
+    <!-- <iframe width="100%" height="100%" src="https://www.youtube.com/embed/09R8_2nJtjg" frameborder="0" allowfullscreen="false"></iframe> -->
+    <video muted="" data-widget="videolooper" loop="" autoplay="">
+      <source src="./videos/music_adk.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div id="actions">
+    <div class="track animated lightSpeedIn">
+      <iframe src="https://open.spotify.com/embed?uri=spotify:track:2iuZJX9X9P0GKaE93xcPjk" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+    </div>
+
+    <div class="album animated lightSpeedIn">
+      <iframe src="https://open.spotify.com/embed?uri=spotify:album:4l4u9e9jSbotSXNjYfOugy" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+    </div>
+
+    <div class="track animated lightSpeedIn">
+      <iframe src="https://open.spotify.com/embed?uri=spotify:track:05KfyCEE6otdlT1pp2VIjP" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+    </div>
+
+    <div class="track animated lightSpeedIn last-action">
+      <iframe src="https://open.spotify.com/embed?uri=spotify:track:0u8aj0c4IxeVSLTUuuq9V5" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+    </div>
+  </div>
+
+  <div id="chat">
+    <div class="watson animated fadeInUp">Oi! Estou aqui para batermos um papo sobre música. O que deseja ouvir hoje?</div>
+
+    <div class="you animated fadeInUp">Gostaria de ouvir sugar do maroon 5</div>
+
+    <input id="message" class="animated fadeIn" type="text" placeholder="Digite sua mensagem aqui"/>
+  </div>
+</section>
+
+<footer>Desenvolvido por IBM Bluemix Estag © 2017</footer>
+
+
+	<script type="text/javascript" src="/scripts/util.js"></script>
+	<script type="text/javascript" src="/scripts/index.js"></script>
+</body>
+</html>
