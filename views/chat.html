@@ -11,44 +11,27 @@
 
 	<link rel="stylesheet" href="/style/animate.css">
 	<link rel="stylesheet" href="/style/style.css" />
-  <!-- <link rel="stylesheet" type="text/css" href="/style/chat.css"/> -->
 </head>
 <body>
 	<header></header>
 
 	<section id="container">
+	  <div id="video-background">
+	    <video muted="" data-widget="videolooper" loop="" autoplay="">
+	      <source src="./videos/music_adk.mp4" type="video/mp4" />
+	    </video>
+	    <iframe id="clip" src="" frameborder="0" allowfullscreen="false"></iframe>
+	  </div>
 
+	  <div id="actions"></div>
 
-  <div id="video-background">
-    <video muted="" data-widget="videolooper" loop="" autoplay="">
-      <source src="./videos/music_adk.mp4" type="video/mp4" />
-    </video>
-    <iframe id="clip" src="" frameborder="0" allowfullscreen="false"></iframe>
-  </div>
+	  <div id="chat">
+	    <div id="chat-body"></div>
+	    <input type="text" id="message" class="animated fadeIn"  placeholder="Digite sua mensagem aqui" />
+	  </div>
+	</section>
 
-  <div id="actions"></div>
-
-  <div id="chat">
-    <div id="chat-body"></div>
-    <input id="message" class="animated fadeIn" type="text" placeholder="Digite sua mensagem aqui" onkeypress="return newEvent(event)" />
-  </div>
-
-  <!--
-  <div class="chat-popup" id="chat-popup">
-      <div class="chat-header" >Chat with Watson!</div>
-      <div class="chat-body" id="chat-body">
-<!--                <div class="chat-date"><span>Today, 2:22 PM</span></div>--><!--
-      </div>
-      <div class="chat-footer">
-          <input type="text" id="chatInput" placeholder="Type a message.." onkeypress="return newEvent(event)"/>
-          <a href="javascript:;" class="send-btn"></a>
-      </div>
-  </div>
--->
-</section>
-
-<footer>Desenvolvido por IBM Bluemix Estag © 2017</footer>
-
+	<footer>IBM Bluemix Estag © 2017</footer>
 
 	<script type="text/javascript" src="/scripts/util.js"></script>
 	<script type="text/javascript" src="/scripts/index.js"></script>

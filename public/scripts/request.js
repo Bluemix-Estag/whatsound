@@ -18,7 +18,7 @@ app.get('/create', function(req, res){
             Accept: 'text/json'
         }
     };
-    
+
     function callback(error, response, body){
         if(!error && response.statusCode == 200){
             var info = JSON.parse(body);
@@ -26,7 +26,7 @@ app.get('/create', function(req, res){
         }
     }
     request(options, callback);
-    
+
 });
 
 // If you will make more than one request, use the function below;
@@ -38,9 +38,9 @@ app.get('/create', function(req, res){
 //            Accept: 'text/json'
 //        }
 //    };
-//    
+//
 //    var urlList = ["url1","url2","..."];
-//    
+//
 //    Promise.map(urlList, function(url){
 //        return request.getAsync(url).spread(function (response, body){
 //            return [JSON.parse(body), url];

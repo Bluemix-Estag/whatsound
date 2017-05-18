@@ -1,0 +1,220 @@
+{
+    "text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],
+    "procedures": [{
+        "name": "SHOW_ARTIST",
+        "params": {
+            "id": "6eUKZXaKkcviH0Ku9w2n3V",
+            "artist": "Ed Sheeran",
+            "url": "https://open.spotify.com/artist/6eUKZXaKkcviH0Ku9w2n3V",
+            "image": "https://i.scdn.co/image/f0370da3f52161b07a461b4be9a64d0adbfb498d",
+            "genres": [
+                "pop"
+            ],
+            "topTracks": [],
+            "related": [{
+                    "artist": "James Bay",
+                    "image": "https://i.scdn.co/image/d8bc6593d0449a578ceb545fd1ae9172ac67bf83",
+                    "url": "https://open.spotify.com/artist/4EzkuveR9pLvDVFNx6foYD"
+                },
+                {
+                    "artist": "Birdy",
+                    "image": "https://i.scdn.co/image/b6feba3d55a45401b5ef463ba4c8b20d764e48af",
+                    "url": "https://open.spotify.com/artist/2WX2uTcsvV5OnS0inACecP"
+                },
+                {
+                    "artist": "The Script",
+                    "image": "https://i.scdn.co/image/dd1ea0b4e68b25e2a82de61b03ee3933be266475",
+                    "url": "https://open.spotify.com/artist/3AQRLZ9PuTAozP28Skbq8V"
+                },
+                {
+                    "artist": "James Arthur",
+                    "image": "https://i.scdn.co/image/c068c0106219344f2e2c189e5a15233e0a291496",
+                    "url": "https://open.spotify.com/artist/4IWBUUAFIplrNtaOHcJPRM"
+                },
+                {
+                    "artist": "Olly Murs",
+                    "image": "https://i.scdn.co/image/48f16a4c5913005dbea716cce43fde74cfc35301",
+                    "url": "https://open.spotify.com/artist/3whuHq0yGx60atvA2RCVRW"
+                },
+                {
+                    "artist": "Little Mix",
+                    "image": "https://i.scdn.co/image/265f6523518366131db3638d0db0195a163c6f19",
+                    "url": "https://open.spotify.com/artist/3e7awlrlDSwF3iM0WBjGMp"
+                },
+                {
+                    "artist": "Sam Smith",
+                    "image": "https://i.scdn.co/image/18351bcb27f203503073be9540492d0879dd4a84",
+                    "url": "https://open.spotify.com/artist/2wY79sveU1sp5g7SokKOiI"
+                },
+                {
+                    "artist": "ZAYN",
+                    "image": "https://i.scdn.co/image/a179369b2294a586ff0420053f780b337a3f1c8f",
+                    "url": "https://open.spotify.com/artist/5ZsFI1h6hIdQRw2ti0hz81"
+                },
+                {
+                    "artist": "Shawn Mendes",
+                    "image": "https://i.scdn.co/image/889d1206458b26f94aab88e23257706847b41091",
+                    "url": "https://open.spotify.com/artist/7n2wHs1TKAczGzO7Dd2rGr"
+                },
+                {
+                    "artist": "One Direction",
+                    "image": "https://i.scdn.co/image/5bb443424a1ad71603c43d67f5af1a04da6bb3c8",
+                    "url": "https://open.spotify.com/artist/4AK6F7OLvEQ5QYCBNiQWHq"
+                },
+                {
+                    "artist": "James Blunt",
+                    "image": "https://i.scdn.co/image/5fae108dc2929aad680ee95fe082816767ef2838",
+                    "url": "https://open.spotify.com/artist/7KMqksf0UMdyA0UCf4R3ux"
+                },
+                {
+                    "artist": "Ellie Goulding",
+                    "image": "https://i.scdn.co/image/c2fe5d1e00a76b69ecd53164304ce2004f6064e9",
+                    "url": "https://open.spotify.com/artist/0X2BH1fck6amBIoJhDVmmJ"
+                },
+                {
+                    "artist": "Harry Styles",
+                    "image": "https://i.scdn.co/image/0d5beba53acf92820f5b7dfb59ce615c99800a13",
+                    "url": "https://open.spotify.com/artist/6KImCVD70vtIoJWnq6nGn3"
+                },
+                {
+                    "artist": "Jason Mraz",
+                    "image": "https://i.scdn.co/image/05dc7e7d87ef98c8ebdb76eada20b5f3e1e31898",
+                    "url": "https://open.spotify.com/artist/4phGZZrJZRo4ElhRtViYdl"
+                },
+                {
+                    "artist": "Zara Larsson",
+                    "image": "https://i.scdn.co/image/3961cce791cb4581985543841952fb9e2242b81b",
+                    "url": "https://open.spotify.com/artist/1Xylc3o4UrD53lo9CvFvVg"
+                },
+                {
+                    "artist": "Passenger",
+                    "image": "https://i.scdn.co/image/3b822e8c5d26c2352ad5528adc0035b636e8c293",
+                    "url": "https://open.spotify.com/artist/0gadJ2b9A4SKsB1RFkBb66"
+                },
+                {
+                    "artist": "Clean Bandit",
+                    "image": "https://i.scdn.co/image/4e052e78ad16b5099593194e8a111fb22032186f",
+                    "url": "https://open.spotify.com/artist/6MDME20pz9RveH9rEXvrOM"
+                },
+                {
+                    "artist": "OneRepublic",
+                    "image": "https://i.scdn.co/image/cac11e9ad5246a4d975cc542bad1776a1e38de68",
+                    "url": "https://open.spotify.com/artist/5Pwc4xIPtQLFEnJriah9YJ"
+                },
+                {
+                    "artist": "The Vamps",
+                    "image": "https://i.scdn.co/image/b205cc6191bbad1c5a84e188a695f453efbd6f44",
+                    "url": "https://open.spotify.com/artist/7gAppWoH7pcYmphCVTXkzs"
+                },
+                {
+                    "artist": "Jason Derulo",
+                    "image": "https://i.scdn.co/image/6981a8c96e67f0b3e1fd24a7c5a8d735054b1c0f",
+                    "url": "https://open.spotify.com/artist/07YZf4WDAMNwqr4jfgOZ8y"
+                }
+            ],
+            "albums": [{
+                    "name": "÷ (Deluxe)",
+                    "image": "https://i.scdn.co/image/e6a84983ed9b0a04ce633b021329f7df034e7c7c",
+                    "url": "https://open.spotify.com/album/3T4tUhGYeRNVUGevb0wThu"
+                },
+                {
+                    "name": "5",
+                    "image": "https://i.scdn.co/image/bd21e1d0ed0fc83a9906b2d9dcf2f1072ec7bb75",
+                    "url": "https://open.spotify.com/album/2hyDesSAYNefikDJXlqhPE"
+                },
+                {
+                    "name": "x (Deluxe Edition)",
+                    "image": "https://i.scdn.co/image/b68b39fdc2409d0f526ad48775ddcd93ff496cda",
+                    "url": "https://open.spotify.com/album/1xn54DMo2qIqBuMqHtUsFd"
+                },
+                {
+                    "name": "x (Wembley Edition)",
+                    "image": "https://i.scdn.co/image/02a6e0894c93909845e3815f7ac21ba5d62b0f0a",
+                    "url": "https://open.spotify.com/album/0Yi8StK0Si3u2bLr3Qsm2Q"
+                },
+                {
+                    "name": "x (Wembley Edition)",
+                    "image": "https://i.scdn.co/image/02a6e0894c93909845e3815f7ac21ba5d62b0f0a",
+                    "url": "https://open.spotify.com/album/3hA2oZbZwHU8tSPBFIZhFr"
+                },
+                {
+                    "name": "x (Wembley Edition)",
+                    "image": "https://i.scdn.co/image/02a6e0894c93909845e3815f7ac21ba5d62b0f0a",
+                    "url": "https://open.spotify.com/album/6NoBzYmh5gUusGPCfg0pct"
+                },
+                {
+                    "name": "x (Wembley Edition)",
+                    "image": "https://i.scdn.co/image/02a6e0894c93909845e3815f7ac21ba5d62b0f0a",
+                    "url": "https://open.spotify.com/album/0MeOIA0wwSa6nW79jy8QcZ"
+                },
+                {
+                    "name": "Live At The Bedford",
+                    "image": "https://i.scdn.co/image/4b2699515e0c91815082e61cc0aa9814645e7d77",
+                    "url": "https://open.spotify.com/album/4JUtnlZKdLr01xEIymhm0G"
+                },
+                {
+                    "name": "Loose Change",
+                    "image": "https://i.scdn.co/image/07e612803190f284c7d9de34a1cbdf27a2dd2eda",
+                    "url": "https://open.spotify.com/album/3QbPtoOWiJqZurXXxJwaOD"
+                },
+                {
+                    "name": "+",
+                    "image": "https://i.scdn.co/image/d9319e40a9f535ad719cac2faeb3e7c03387225a",
+                    "url": "https://open.spotify.com/album/1slAnKc9Ykyght8EI9Y0dM"
+                },
+                {
+                    "name": "+",
+                    "image": "https://i.scdn.co/image/43bf97e5b621230110d3d515bd272bde91059d1f",
+                    "url": "https://open.spotify.com/album/02pi98kE0nra0yBqCStzbC"
+                },
+                {
+                    "name": "+",
+                    "image": "https://i.scdn.co/image/260b3bd042a702b5117b872228e96aa49028eeb1",
+                    "url": "https://open.spotify.com/album/3w0VffyaakTvUtTwjPCo7Y"
+                },
+                {
+                    "name": "+",
+                    "image": "https://i.scdn.co/image/43bf97e5b621230110d3d515bd272bde91059d1f",
+                    "url": "https://open.spotify.com/album/2PNtGh8cixtb0oXjbGkUnZ"
+                },
+                {
+                    "name": "+",
+                    "image": "https://i.scdn.co/image/43bf97e5b621230110d3d515bd272bde91059d1f",
+                    "url": "https://open.spotify.com/album/0W5GGnapMz0VwemQvJDqa7"
+                },
+                {
+                    "name": "No.5 Collaborations Project",
+                    "image": "https://i.scdn.co/image/e5aa69e13dd00916f1712ac41e84e74735cb3acb",
+                    "url": "https://open.spotify.com/album/6DpIyaMgt5p9HlGd1c0LDM"
+                },
+                {
+                    "name": "Castle on the Hill (Seeb Remix)",
+                    "image": "https://i.scdn.co/image/3000049db354e7f7736d610c3e179c0163dc0953",
+                    "url": "https://open.spotify.com/album/6LhLsGjkUVzAuywuuFIkdu"
+                },
+                {
+                    "name": "Galway Girl (Martin Jensen Remix)",
+                    "image": "https://i.scdn.co/image/e6a84983ed9b0a04ce633b021329f7df034e7c7c",
+                    "url": "https://open.spotify.com/album/77lUgFzLJriGpyTx2pGbCO"
+                },
+                {
+                    "name": "Shape of You (Latin Remix) [feat. Zion & Lennox]",
+                    "image": "https://i.scdn.co/image/621d2909bcc2c26cd0b274aab0414c9d422a1576",
+                    "url": "https://open.spotify.com/album/0LWRykrSX54AWiMZlV5uUk"
+                },
+                {
+                    "name": "Shape of You (Major Lazer Remix) [feat. Nyla & Kranium]",
+                    "image": "https://i.scdn.co/image/621d2909bcc2c26cd0b274aab0414c9d422a1576",
+                    "url": "https://open.spotify.com/album/5j1qqBBmxrDu58pYAj8r9v"
+                },
+                {
+                    "name": "Shape of You (Stormzy Remix)",
+                    "image": "https://i.scdn.co/image/621d2909bcc2c26cd0b274aab0414c9d422a1576",
+                    "url": "https://open.spotify.com/album/59KxIJM9NhO7kVYyh26Ulg"
+                }
+            ],
+            "status": false,
+            "message": false
+        }
+    }]
+}

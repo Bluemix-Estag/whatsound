@@ -1,0 +1,16 @@
+{
+    "text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],
+    "procedures": [{
+        "name": "SHOW_TRACK",
+        "params": {
+            "name": "Shape of You",
+            "artist": "Ed Sheeran",
+            "album": "Shape of You",
+            "uri": "spotify:track:0FE9t6xYkqWXU2ahLh6D8X",
+            "url": "https://open.spotify.com/track/0FE9t6xYkqWXU2ahLh6D8X",
+            "genres": [
+                "pop"
+            ]
+        }
+    }]
+}

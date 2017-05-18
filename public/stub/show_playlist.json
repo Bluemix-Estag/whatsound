@@ -1,0 +1,14 @@
+{
+    "text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],
+    "procedures": [{
+        "name": "SHOW_PLAYLIST",
+        "params": {
+            "message": "Inserted uri successfully",
+            "status": true,
+            "uris": [
+                "spotify:track:7qiZfU4dY1lWllzX7mPBI3",
+                "spotify:track:0afhq8XCExXpqazXczTSve"
+            ]
+        }
+    }]
+}
