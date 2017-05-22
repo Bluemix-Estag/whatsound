@@ -102,10 +102,11 @@ footer img {
 }
 
 #chat {
-  width: 100%;
-  max-width: 494px;
   position: relative;
+  min-width: 494px;
+  max-width: 494px;
   margin-top: auto;
+  height: auto;
 }
 
 #chat-body {
@@ -114,6 +115,7 @@ footer img {
   overflow-x: hidden;
   padding-top: 10px;
   padding-bottom: 47px;
+  height: auto;
 }
 
 #message {
@@ -268,6 +270,40 @@ footer img {
 	line-height: 150%;
 }
 
+.chat-action {
+  margin-left: 0px;
+  margin-bottom: 14.5px;
+}
+
+.chat-action .track,
+.chat-action .artist,
+.chat-action .album,
+.chat-action .lyric {
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
 .last-action {
-  margin-bottom: 10px;
+  display: none;
+}
+
+*[data-show="yes"] {
+  display: flex;
+}
+*[data-show="no"] {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .chat-action {
+    display: flex;
+  }
+
+  #chat-actions {
+    display: block;
+  }
+
+  #actions {
+    display: none;
+  }
 }

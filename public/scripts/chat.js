@@ -14,6 +14,7 @@ $(document).ready(function() {
     };
 
     /* INTERFACE OBJECT */
+    var container = $('#container');
     var message = $('#message');
     var chat = $('#chat');
     var chatBody = $('#chat-body');
@@ -35,23 +36,23 @@ $(document).ready(function() {
         websocket.send('oi');
 
         /*** FIX ME - DEV ONLY ***/
-        $.getJSON('/stub/show_album.json', function(data) {
-            // displayContentFromData(data);
-            //
-            // displayContentFromData('{"text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],"procedures": [{"name": "SHOW_TRACK","params": {"name": "Shape of You","artist": "Ed Sheeran","album": "Shape of You","uri": "spotify:track:0FE9t6xYkqWXU2ahLh6D8X","url":"https://open.spotify.com/track/0FE9t6xYkqWXU2ahLh6D8X","genres": ["pop"]}}]}');
-            //
-            // $.getJSON('/stub/show_lyric.json', function(data) {
-            //     displayContentFromData(data);
-            // });
-            //
-            // $.getJSON('/stub/show_artist.json', function(data) {
-            //     displayContentFromData(data);
-            // });
-            //
-            // $.getJSON('/stub/show_clip.json', function(data) {
-            //     displayContentFromData(data);
-            // });
-        });
+        // $.getJSON('/stub/show_album.json', function(data) {
+        //     displayContentFromData(data);
+        //
+        //     displayContentFromData('{"text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],"procedures": [{"name": "SHOW_TRACK","params": {"name": "Shape of You","artist": "Ed Sheeran","album": "Shape of You","uri": "spotify:track:0FE9t6xYkqWXU2ahLh6D8X","url":"https://open.spotify.com/track/0FE9t6xYkqWXU2ahLh6D8X","genres": ["pop"]}}]}');
+        //
+        //     $.getJSON('/stub/show_lyric.json', function(data) {
+        //         displayContentFromData(data);
+        //     });
+        //
+        //     $.getJSON('/stub/show_artist.json', function(data) {
+        //         displayContentFromData(data);
+        //     });
+        //
+        //     $.getJSON('/stub/show_clip.json', function(data) {
+        // displayContentFromData(data);
+        // });
+        // });
     }
 
     websocket.onclose = function(event) {}
@@ -105,10 +106,10 @@ $(document).ready(function() {
         }
 
         if (json.procedures != null) {
-          for (var i = 0; i < json.procedures.length; i++) {
-              var procedure = json.procedures[i];
-              displayContent(WATSON, procedure);
-          }
+            for (var i = 0; i < json.procedures.length; i++) {
+                var procedure = json.procedures[i];
+                displayContent(WATSON, procedure);
+            }
         }
     }
 
@@ -149,31 +150,48 @@ $(document).ready(function() {
 
     function showTrack(params) {
         $('.last-action').first().removeClass('last-action');
+        $('.last-chat-action').first().removeClass('last-chat-action');
+
         var actions = $('#actions');
         var html = spotifyTrackHTML(params.uri);
         appendHTMLWithScroll(actions, html);
+
+        var chat = $('#chat-body');
+        html = spotifyTrackHTML(params.uri, 'actions-content chat-action last-chat-action animated fadeInUp');
+        appendHTMLWithScroll(chat, html);
     }
 
     function showArtist(params) {
         $('.last-action').first().removeClass('last-action');
+        $('.last-chat-action').first().removeClass('last-chat-action');
 
         var actions = $('#actions');
+        var chat = $('#chat-body');
+
         var html;
+        var htmlChat;
         if (params.topTracks.length > 0) {
             html = spotifyArtistHTML(params.id, params.topTracks[0].uri);
+            htmlChat = spotifyArtistHTML(params.id, params.topTracks[0].uri, 'actions-content chat-action last-chat-action animated fadeInUp');
         } else {
-            html = spotifyArtistHTML(params.id, null);
+            html = spotifyArtistHTML(params.id);
+            htmlChat = spotifyArtistHTML(params.id, null, 'actions-content chat-action last-chat-action animated fadeInUp');
         }
-
         appendHTMLWithScroll(actions, html);
+        appendHTMLWithScroll(chat, htmlChat);
     }
 
     function showAlbum(params) {
         $('.last-action').first().removeClass('last-action');
+        $('.last-chat-action').first().removeClass('last-chat-action');
 
         var actions = $('#actions');
         var html = spotifyAlbumHTML(params.id);
         appendHTMLWithScroll(actions, html);
+
+        var chat = $('#chat-body');
+        html = spotifyAlbumHTML(params.id, 'actions-content chat-action last-chat-action animated fadeInUp');
+        appendHTMLWithScroll(chat, html);
     }
 
     function showClip(params) {
@@ -185,6 +203,10 @@ $(document).ready(function() {
         var actions = $('#actions');
         var html = vagalumeHTML(params.lyrics.track);
         appendHTMLWithScroll(actions, html);
+
+        var chat = $('#chat-body');
+        html = vagalumeHTML(params.lyrics.track, 'actions-content chat-action animated fadeInUp');
+        appendHTMLWithScroll(chat, html);
     }
 
     function showText(source, params) {
@@ -193,6 +215,29 @@ $(document).ready(function() {
             var html = messageHTML(params.text, source)
             appendHTMLWithScroll(chat, html);
             updateConstraints();
+
+            if ($('.last-action').attr('data-show') == null) {
+                if (params.text == 'sim') {
+                    $('.last-action').attr('data-show', 'yes');
+
+                    var actions = $('#actions');
+                    var obj = document.getElementById(actions.attr('id'));
+                    actions.stop();
+                    actions.animate({
+                        scrollTop: obj.scrollHeight
+                    }, 400);
+                } else if (params.text == 'nao' || params.text == 'não') {
+                    $('.last-action').attr('data-show', 'no');
+                }
+            }
+
+            if ($('.last-chat-action').attr('data-show') == null) {
+                if (params.text == 'sim') {
+                    $('.last-chat-action').attr('data-show', 'no');
+                } else if (params.text == 'nao' || params.text == 'não') {
+                    $('.last-chat-action').attr('data-show', 'yes');
+                }
+            }
         }
     }
 
@@ -205,14 +250,19 @@ $(document).ready(function() {
         element.append($(html));
 
         var obj = document.getElementById(element.attr('id'));
+        element.stop();
         element.animate({
             scrollTop: obj.scrollHeight
         }, 400);
     }
 
-    function spotifyTrackHTML(uri) {
+    function spotifyTrackHTML(uri, attrClass) {
         var actions = $('#actions');
+
         var html = '<div class="actions-content last-action animated lightSpeedIn">';
+        if (attrClass != null) {
+            html = '<div class="' + attrClass + '">';
+        }
 
         uri = 'https://open.spotify.com/embed?uri=' + uri;
         html += '<div class="track">';
@@ -224,9 +274,12 @@ $(document).ready(function() {
         return html;
     }
 
-    function spotifyArtistHTML(id, topTrackURI) {
+    function spotifyArtistHTML(id, topTrackURI, attrClass) {
         var actions = $('#actions');
         var html = '<div class="actions-content last-action animated lightSpeedIn">';
+        if (attrClass != null) {
+            html = '<div class="' + attrClass + '">';
+        }
 
         var uri = 'https://embed.spotify.com/follow/1/?uri=spotify:artist:' + id + '&size=detail&theme=dark';
         html += '<div class="artist">';
@@ -243,9 +296,12 @@ $(document).ready(function() {
         return html;
     }
 
-    function spotifyAlbumHTML(id) {
+    function spotifyAlbumHTML(id, attrClass) {
         var actions = $('#actions');
         var html = '<div class="actions-content last-action animated lightSpeedIn">';
+        if (attrClass != null) {
+            html = '<div class="' + attrClass + '">';
+        }
 
         var uri = 'https://open.spotify.com/embed?uri=spotify:album:' + id;
         html += '<div class="album">';
@@ -257,8 +313,11 @@ $(document).ready(function() {
         return html;
     }
 
-    function vagalumeHTML(track) {
+    function vagalumeHTML(track, attrClass) {
         var html = '<div class="actions-content last-action animated lightSpeedIn">';
+        if (attrClass != null) {
+            html = '<div class="' + attrClass + '">';
+        }
         html += '<div class="lyric">';
         html += track;
         html += '</div>';
@@ -312,14 +371,10 @@ $(document).ready(function() {
     }
 
     function updateConstraints() {
-        actions.height($('#container').height());
-        if (chat.height() <= $('#container').height()) {
-          chat.css('margin-top', 'auto');
-        }else {
-          chat.height($('#container').height());
-          chatBody.css('max-height', (chat.height() - 59) + 'px');
-          chat.css('margin-top', '0');
-        }
+        actions.height(container.height());
+
+        chat.css('max-height', (container.height()) + 'px');
+        chatBody.css('max-height', (container.height() - 59) + 'px');
     }
 
     message.focus();
