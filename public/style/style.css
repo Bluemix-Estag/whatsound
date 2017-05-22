@@ -22,18 +22,13 @@
     color: #ffffff;
 }
 
-p,
-div,
-a,
-label,
-article {
+p, div, a, label, article {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
 }
 
-html,
-body {
+html, body {
     padding: 0;
     margin: 0;
     height: 100%;
@@ -104,9 +99,9 @@ footer img {
 }
 
 #chat {
-    height: 100%;
     min-width: 494px;
     max-width: 494px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -115,14 +110,14 @@ footer img {
 #chat-body {
     width: 100%;
     height: auto;
-/*    max-height: 100%;*/
-/*    min-height: 100px;*/
-/*    min-height: 100px;*/
-/*        display: flex;*/
-/*        flex-direction: column;*/
-/*        justify-content: flex-end;*/
-    
+        /*max-height: 100%;*/
+        /*min-height: 100px;*/
+    /*    min-height: 100px;*/
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*justify-content: flex-end;*/
     overflow-y: scroll;
+    padding-top: 10px;
 }
 
 #message {
@@ -133,10 +128,16 @@ footer img {
     background: #ffffff;
     color: #000000;
     padding: 10px;
-    opacity: 0.85;
 }
 
-.chat-content {
+.chat-content-user {
+    margin-bottom: 10px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.chat-content-watson {
     margin-bottom: 10px;
     margin-right: 20px;
 }
@@ -149,7 +150,7 @@ footer img {
     color: #ffffff;
     padding: 10px;
     padding-bottom: 12.5px;
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
 }
 
@@ -161,31 +162,26 @@ footer img {
     color: #ffffff;
     padding: 10px;
     padding-bottom: 12.5px;
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
-    /*    justify-content: flex-end;*/
 }
 
-.user .chat-message,
-.watson .chat-message {
-    /*    display: inline-flex;*/
+.user .chat-message, .watson .chat-message {
     max-width: 90%;
     margin-right: 10px;
-    white-space: pre-wrap;
     /* CSS3 */
-    white-space: -moz-pre-wrap;
+    white-space: pre-wrap;
     /* Firefox */
-    white-space: -pre-wrap;
+    white-space: -moz-pre-wrap;
     /* Opera <7 */
-    white-space: -o-pre-wrap;
+    white-space: -pre-wrap;
     /* Opera 7 */
-    word-wrap: break-word;
+    white-space: -o-pre-wrap;
     /* IE */
+    word-wrap: break-word;
 }
 
-.user .chat-date,
-.watson .chat-date {
-    /*    display: inline-flex;*/
+.user .chat-date, .watson .chat-date {
     max-width: 10%;
     font-size: xx-small;
     height: 10px;
@@ -276,10 +272,7 @@ footer img {
     margin-bottom: 14.5px;
 }
 
-.chat-action .track,
-.chat-action .artist,
-.chat-action .album,
-.chat-action .lyric {
+.chat-action .track, .chat-action .artist, .chat-action .album, .chat-action .lyric {
     margin-left: 0px;
     margin-top: 0px;
 }
