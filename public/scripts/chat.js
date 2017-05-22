@@ -36,23 +36,23 @@ $(document).ready(function() {
         websocket.send('oi');
 
         /*** FIX ME - DEV ONLY ***/
-        // $.getJSON('/stub/show_album.json', function(data) {
-        //     displayContentFromData(data);
-        //
-        //     displayContentFromData('{"text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],"procedures": [{"name": "SHOW_TRACK","params": {"name": "Shape of You","artist": "Ed Sheeran","album": "Shape of You","uri": "spotify:track:0FE9t6xYkqWXU2ahLh6D8X","url":"https://open.spotify.com/track/0FE9t6xYkqWXU2ahLh6D8X","genres": ["pop"]}}]}');
-        //
-        //     $.getJSON('/stub/show_lyric.json', function(data) {
-        //         displayContentFromData(data);
-        //     });
-        //
-        //     $.getJSON('/stub/show_artist.json', function(data) {
-        //         displayContentFromData(data);
-        //     });
-        //
-        //     $.getJSON('/stub/show_clip.json', function(data) {
-        // displayContentFromData(data);
-        // });
-        // });
+//         $.getJSON('/stub/show_album.json', function(data) {
+//             displayContentFromData(data);
+//        
+//             displayContentFromData('{"text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],"procedures": [{"name": "SHOW_TRACK","params": {"name": "Shape of You","artist": "Ed Sheeran","album": "Shape of You","uri": "spotify:track:0FE9t6xYkqWXU2ahLh6D8X","url":"https://open.spotify.com/track/0FE9t6xYkqWXU2ahLh6D8X","genres": ["pop"]}}]}');
+//        
+//             $.getJSON('/stub/show_lyric.json', function(data) {
+//                 displayContentFromData(data);
+//             });
+//        
+//             $.getJSON('/stub/show_artist.json', function(data) {
+//                 displayContentFromData(data);
+//             });
+        
+//             $.getJSON('/stub/show_clip.json', function(data) {
+//                displayContentFromData(data);
+//            });
+//         });
     }
 
     websocket.onclose = function(event) {}
@@ -214,30 +214,30 @@ $(document).ready(function() {
             var chat = $('#chat-body');
             var html = messageHTML(params.text, source)
             appendHTMLWithScroll(chat, html);
-            updateConstraints();
+//            updateConstraints();
 
-            if ($('.last-action').attr('data-show') == null) {
-                if (params.text == 'sim') {
-                    $('.last-action').attr('data-show', 'yes');
-
-                    var actions = $('#actions');
-                    var obj = document.getElementById(actions.attr('id'));
-                    actions.stop();
-                    actions.animate({
-                        scrollTop: obj.scrollHeight
-                    }, 400);
-                } else if (params.text == 'nao' || params.text == 'não') {
-                    $('.last-action').attr('data-show', 'no');
-                }
-            }
-
-            if ($('.last-chat-action').attr('data-show') == null) {
-                if (params.text == 'sim') {
-                    $('.last-chat-action').attr('data-show', 'no');
-                } else if (params.text == 'nao' || params.text == 'não') {
-                    $('.last-chat-action').attr('data-show', 'yes');
-                }
-            }
+//            if ($('.last-action').attr('data-show') == null) {
+//                if (params.text == 'sim') {
+//                    $('.last-action').attr('data-show', 'yes');
+//
+//                    var actions = $('#actions');
+//                    var obj = document.getElementById(actions.attr('id'));
+//                    actions.stop();
+//                    actions.animate({
+//                        scrollTop: obj.scrollHeight
+//                    }, 400);
+//                } else if (params.text == 'nao' || params.text == 'não') {
+//                    $('.last-action').attr('data-show', 'no');
+//                }
+//            }
+//
+//            if ($('.last-chat-action').attr('data-show') == null) {
+//                if (params.text == 'sim') {
+//                    $('.last-chat-action').attr('data-show', 'no');
+//                } else if (params.text == 'nao' || params.text == 'não') {
+//                    $('.last-chat-action').attr('data-show', 'yes');
+//                }
+//            }
         }
     }
 
@@ -247,13 +247,23 @@ $(document).ready(function() {
 
     /* INTERFACE FUNCTIONS */
     function appendHTMLWithScroll(element, html) {
-        element.append($(html));
-
-        var obj = document.getElementById(element.attr('id'));
-        element.stop();
-        element.animate({
-            scrollTop: obj.scrollHeight
-        }, 400);
+ var child = $(html);
+        element.append(child);
+        
+//        child.addClass('animated slideInUp');
+//        child.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+//            child.removeClass('animated slideInUp');
+//        });
+        
+            
+//        setTimeout(function(){obj.scrollTop = obj.scrollHeight;},1000);
+               var obj = document.getElementById(element.attr('id'));
+         var chat = document.getElementById("chat");
+            if(chat.scrollHeight < obj.scrollHeight) setTimeout(function(){
+               obj.scrollTop = obj.scrollHeight; 
+            },250); 
+        
+           
     }
 
     function spotifyTrackHTML(uri, attrClass) {
@@ -370,13 +380,13 @@ $(document).ready(function() {
         });
     }
 
-    function updateConstraints() {
-        actions.height(container.height());
-
-        chat.css('max-height', (container.height()) + 'px');
-        chatBody.css('max-height', (container.height() - 59) + 'px');
-    }
+//    function updateConstraints() {
+//        actions.height(container.height());
+//
+//        chat.css('max-height', (container.height()) + 'px');
+//        chatBody.css('max-height', (container.height() - 59) + 'px');
+//    }
 
     message.focus();
-    updateConstraints();
+//    updateConstraints();
 });
