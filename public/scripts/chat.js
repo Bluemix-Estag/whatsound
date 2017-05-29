@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    let WEBSOCKET_URL = 'ws://red-orchestrator.mybluemix.net/ws/chat';
+    let WEBSOCKET_URL = 'wss://red-orchestrator.mybluemix.net/wss/chat';
     let WATSON = 'watson';
     let USER = 'user';
     let ChatProcedures = {
@@ -10,7 +10,8 @@ $(document).ready(function() {
         SHOW_LYRIC: 'SHOW_LYRIC',
         SHOW_PLAYLIST: 'SHOW_PLAYLIST',
         SHOW_TEXT: 'SHOW_TEXT',
-        SHOW_BANNER: 'SHOW_BANNER'
+        SHOW_BANNER: 'SHOW_BANNER',
+        CONFIRMED: 'CONFIRMED'
     };
 
     /* INTERFACE OBJECT */
@@ -19,6 +20,8 @@ $(document).ready(function() {
     var chat = $('#chat');
     var chatBody = $('#chat-body');
     var actions = $('#actions');
+
+    var contents = [];
 
     /* CLASSES */
     function Procedure(name, params) {
@@ -32,23 +35,27 @@ $(document).ready(function() {
         websocket.send('oi');
 
         /*** FIX ME - DEV ONLY ***/
-        //         $.getJSON('/stub/show_album.json', function(data) {
-        //             displayContentFromData(data);
-        //
-        //             displayContentFromData('{"text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],"procedures": [{"name": "SHOW_TRACK","params": {"name": "Shape of You","artist": "Ed Sheeran","album": "Shape of You","uri": "spotify:track:0FE9t6xYkqWXU2ahLh6D8X","url":"https://open.spotify.com/track/0FE9t6xYkqWXU2ahLh6D8X","genres": ["pop"]}}]}');
-        //
-        //             $.getJSON('/stub/show_lyric.json', function(data) {
-        //                 displayContentFromData(data);
-        //             });
-        //
-        //             $.getJSON('/stub/show_artist.json', function(data) {
-        //                 displayContentFromData(data);
-        //             });
+        // displayContentFromData('{"text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],"procedures": [{"name": "SHOW_TRACK","params": {"name": "Shape of You","artist": "Ed Sheeran","album": "Shape of You","uri": "spotify:track:0FE9t6xYkqWXU2ahLh6D8X","url":"https://open.spotify.com/track/0FE9t6xYkqWXU2ahLh6D8X","genres": ["pop"]}}]}');
 
-        //             $.getJSON('/stub/show_clip.json', function(data) {
-        //                displayContentFromData(data);
-        //            });
-        //         });
+        // $.getJSON('/stub/show_lyric.json', function(data) {
+        //     displayContentFromData(data);
+        // });
+        //
+        // $.getJSON('/stub/show_lyric.json', function(data) {
+        //     displayContentFromData(data);
+        // });
+        //
+        // $.getJSON('/stub/show_artist.json', function(data) {
+        //     displayContentFromData(data);
+        // });
+        //
+        // $.getJSON('/stub/show_album.json', function(data) {
+        //   displayContentFromData(data);
+        // });
+
+        //   $.getJSON('/stub/show_clip.json', function(data) {
+        //      displayContentFromData(data);
+        //  });
     }
 
     websocket.onclose = function(event) {}
@@ -85,6 +92,23 @@ $(document).ready(function() {
             }
         }
     });
+
+    $(window).resize(function() {
+        $(".actions-content").each(function(index, element) {
+            var lastItem;
+            for (var index in contents) {
+                var content = contents[index];
+                if (content.attr('id') == $(element).attr('id')) {
+                    content.remove();
+                    lastItem.after(content);
+                    break;
+                }
+                if (content.hasClass('chat-content-watson')) {
+                    lastItem = content;
+                }
+            }
+        })
+    })
 
     /* CHAT */
     function displayContentFromData(data) {
@@ -136,6 +160,9 @@ $(document).ready(function() {
                 case ChatProcedures.SHOW_BANNER:
                     showBanner(procedure.params)
                     break;
+                case ChatProcedures.CONFIRMED:
+                    confirm(procedure.params)
+                    break;
                 default:
                     break;
             }
@@ -148,9 +175,9 @@ $(document).ready(function() {
         $('.last-action').first().removeClass('last-action');
         $('.last-chat-action').first().removeClass('last-chat-action');
 
-        var actions = $('#actions');
-        var html = spotifyTrackHTML(params.uri);
-        appendHTMLWithScroll(actions, html);
+        // var actions = $('#actions');
+        // var html = spotifyTrackHTML(params.uri);
+        // appendHTMLWithScroll(actions, html);
 
         var chat = $('#chat-body');
         html = spotifyTrackHTML(params.uri, 'actions-content chat-action last-chat-action animated fadeInUp');
@@ -161,19 +188,19 @@ $(document).ready(function() {
         $('.last-action').first().removeClass('last-action');
         $('.last-chat-action').first().removeClass('last-chat-action');
 
-        var actions = $('#actions');
+        // var actions = $('#actions');
         var chat = $('#chat-body');
 
-        var html;
+        // var html;
         var htmlChat;
         if (params.topTracks.length > 0) {
-            html = spotifyArtistHTML(params.id, params.topTracks[0].uri);
+            // html = spotifyArtistHTML(params.id, params.topTracks[0].uri);
             htmlChat = spotifyArtistHTML(params.id, params.topTracks[0].uri, 'actions-content chat-action last-chat-action animated fadeInUp');
         } else {
-            html = spotifyArtistHTML(params.id);
+            // html = spotifyArtistHTML(params.id);
             htmlChat = spotifyArtistHTML(params.id, null, 'actions-content chat-action last-chat-action animated fadeInUp');
         }
-        appendHTMLWithScroll(actions, html);
+        // appendHTMLWithScroll(actions, html);
         appendHTMLWithScroll(chat, htmlChat);
     }
 
@@ -181,9 +208,9 @@ $(document).ready(function() {
         $('.last-action').first().removeClass('last-action');
         $('.last-chat-action').first().removeClass('last-chat-action');
 
-        var actions = $('#actions');
-        var html = spotifyAlbumHTML(params.id);
-        appendHTMLWithScroll(actions, html);
+        // var actions = $('#actions');
+        // var html = spotifyAlbumHTML(params.id);
+        // appendHTMLWithScroll(actions, html);
 
         var chat = $('#chat-body');
         html = spotifyAlbumHTML(params.id, 'actions-content chat-action last-chat-action animated fadeInUp');
@@ -200,9 +227,9 @@ $(document).ready(function() {
         var html = vagalumeHTML(params.lyrics.track);
         appendHTMLWithScroll(actions, html);
 
-        var chat = $('#chat-body');
-        html = vagalumeHTML(params.lyrics.track, 'actions-content chat-action animated fadeInUp');
-        appendHTMLWithScroll(chat, html);
+        // var chat = $('#chat-body');
+        // html = vagalumeHTML(params.lyrics.track, 'actions-content chat-action animated fadeInUp');
+        // appendHTMLWithScroll(chat, html);
     }
 
     function showText(source, params) {
@@ -210,30 +237,24 @@ $(document).ready(function() {
             var chat = $('#chat-body');
             var html = messageHTML(params.text, source)
             appendHTMLWithScroll(chat, html);
-
-            //            if ($('.last-action').attr('data-show') == null) {
-            //                if (params.text == 'sim') {
-            //                    $('.last-action').attr('data-show', 'yes');
-            //
-            //                    var actions = $('#actions');
-            //                    var obj = document.getElementById(actions.attr('id'));
-            //                    actions.stop();
-            //                    actions.animate({
-            //                        scrollTop: obj.scrollHeight
-            //                    }, 400);
-            //                } else if (params.text == 'nao' || params.text == 'não') {
-            //                    $('.last-action').attr('data-show', 'no');
-            //                }
-            //            }
-            //
-            //            if ($('.last-chat-action').attr('data-show') == null) {
-            //                if (params.text == 'sim') {
-            //                    $('.last-chat-action').attr('data-show', 'no');
-            //                } else if (params.text == 'nao' || params.text == 'não') {
-            //                    $('.last-chat-action').attr('data-show', 'yes');
-            //                }
-            //            }
         }
+    }
+
+    function confirm(params) {
+        var lastChatAction = $('.last-chat-action');
+        lastChatAction.removeClass("fadeInUp");
+        lastChatAction.addClass("bounceOutDown");
+        lastChatAction.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+            lastChatAction.remove();
+            lastChatAction.removeClass("bounceOutDown");
+
+            lastChatAction.removeClass("chat-action");
+            lastChatAction.removeClass("last-chat-action");
+            lastChatAction.addClass('last-action');
+            lastChatAction.addClass("lightSpeedIn");
+
+            appendHTMLWithScroll(actions, lastChatAction);
+        });
     }
 
     function showPlaylist(params) {}
@@ -242,7 +263,12 @@ $(document).ready(function() {
 
     /* INTERFACE FUNCTIONS */
     function appendHTMLWithScroll(element, html) {
-        var child = $(html);
+        var child = html;
+        if (typeof html == 'string') {
+            child = $(html);
+        }
+        contents.push(child);
+        child.attr('id', contents.length);
         element.append(child);
 
         var obj = document.getElementById(element.attr('id'));
@@ -295,9 +321,11 @@ $(document).ready(function() {
 
     function spotifyAlbumHTML(id, attrClass) {
         var actions = $('#actions');
-        var html = '<div class="actions-content last-action animated lightSpeedIn">';
+        var html;
         if (attrClass != null) {
             html = '<div class="' + attrClass + '">';
+        } else {
+            html = '<div class="actions-content last-action animated lightSpeedIn">';
         }
 
         var uri = 'https://open.spotify.com/embed?uri=spotify:album:' + id;
@@ -312,9 +340,6 @@ $(document).ready(function() {
 
     function vagalumeHTML(track, attrClass) {
         var html = '<div class="actions-content last-action animated lightSpeedIn">';
-        if (attrClass != null) {
-            html = '<div class="' + attrClass + '">';
-        }
         html += '<div class="lyric">';
         html += track;
         html += '</div>';
@@ -323,6 +348,8 @@ $(document).ready(function() {
     }
 
     function messageHTML(text, user) {
+        text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
         var date = new Date();
         var html = '';
 

@@ -1,5 +1,5 @@
 {
-    "text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],
+    "text": ["Lorem ipsum dolor sit amet, porro."],
     "procedures": [{
         "name": "SHOW_ALBUM",
         "params": {
