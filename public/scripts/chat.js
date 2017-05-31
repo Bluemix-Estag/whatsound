@@ -23,6 +23,13 @@ $(document).ready(function() {
 
     var contents = [];
 
+    var mobileSize;
+    if ($("body").width() < 960) {
+        mobileSize = true
+    } else {
+        mobileSize = false;
+    }
+
     /* CLASSES */
     function Procedure(name, params) {
         this.name = name;
@@ -94,21 +101,18 @@ $(document).ready(function() {
     });
 
     $(window).resize(function() {
-        $(".actions-content").each(function(index, element) {
-            var lastItem;
-            for (var index in contents) {
-                var content = contents[index];
-                if (content.attr('id') == $(element).attr('id')) {
-                    content.remove();
-                    lastItem.after(content);
-                    break;
-                }
-                if (content.hasClass('chat-content-watson')) {
-                    lastItem = content;
-                }
-            }
-        })
-    })
+      $('#clip').contents().find('video').each(function() {
+            this.currentTime = 0;
+            this.pause();
+        });
+        if ($("body").width() < 960 && mobileSize == false) {
+            mobileSize = true;
+            updateLayout();
+        } else if ($("body").width() > 960 && mobileSize) {
+            mobileSize = false;
+            updateLayout();
+        }
+    });
 
     /* CHAT */
     function displayContentFromData(data) {
@@ -223,13 +227,15 @@ $(document).ready(function() {
     }
 
     function showLyric(params) {
-        var actions = $('#actions');
-        var html = vagalumeHTML(params.lyrics.track);
-        appendHTMLWithScroll(actions, html);
-
-        // var chat = $('#chat-body');
-        // html = vagalumeHTML(params.lyrics.track, 'actions-content chat-action animated fadeInUp');
-        // appendHTMLWithScroll(chat, html);
+        if (mobileSize) {
+            var chat = $('#chat-body');
+            html = vagalumeHTML(params.lyrics.track, 'actions-content last-action animated fadeInUp');
+            appendHTMLWithScroll(chat, html);
+        } else {
+            var actions = $('#actions');
+            var html = vagalumeHTML(params.lyrics.track);
+            appendHTMLWithScroll(actions, html);
+        }
     }
 
     function showText(source, params) {
@@ -243,18 +249,25 @@ $(document).ready(function() {
     function confirm(params) {
         var lastChatAction = $('.last-chat-action');
         lastChatAction.removeClass("fadeInUp");
-        lastChatAction.addClass("bounceOutDown");
-        lastChatAction.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-            lastChatAction.remove();
-            lastChatAction.removeClass("bounceOutDown");
 
+        if (mobileSize) {
             lastChatAction.removeClass("chat-action");
             lastChatAction.removeClass("last-chat-action");
             lastChatAction.addClass('last-action');
-            lastChatAction.addClass("lightSpeedIn");
+        } else {
+            lastChatAction.addClass("bounceOutDown");
+            lastChatAction.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                lastChatAction.remove();
+                lastChatAction.removeClass("bounceOutDown");
 
-            appendHTMLWithScroll(actions, lastChatAction);
-        });
+                lastChatAction.removeClass("chat-action");
+                lastChatAction.removeClass("last-chat-action");
+                lastChatAction.addClass('last-action');
+                lastChatAction.addClass("lightSpeedIn");
+
+                appendHTMLWithScroll(actions, lastChatAction);
+            });
+        }
     }
 
     function showPlaylist(params) {}
@@ -274,6 +287,43 @@ $(document).ready(function() {
         var obj = document.getElementById(element.attr('id'));
         if (obj.clientHeight - obj.scrollHeight != 0) {
             element.stop().animate({
+                scrollTop: obj.scrollHeight
+            }, 250, 'swing');
+        }
+    }
+
+    function updateLayout() {
+        if (mobileSize) {
+            $(".actions-content").each(function(index, element) {
+                element = $(element);
+                element.removeClass("lightSpeedIn");
+                element.removeClass("fadeInUp");
+                var lastItem;
+                for (var index in contents) {
+                    var content = contents[index];
+                    if (content.attr('id') == element.attr('id')) {
+                        content.remove();
+                        lastItem.after(content);
+                        break;
+                    }
+                    if (content.hasClass('chat-content-watson')) {
+                        lastItem = content;
+                    }
+                }
+            });
+        }else {
+            var actions = $('#actions');
+            $(".actions-content").each(function(index, element) {
+                element = $(element);
+                if (!element.hasClass('chat-action')) {
+                    element.remove();
+                    appendHTMLWithScroll(actions, element);
+                }
+            });
+        }
+        var obj = document.getElementById("chat-body");
+        if (obj.clientHeight - obj.scrollHeight != 0) {
+            $('#chat-body').stop().animate({
                 scrollTop: obj.scrollHeight
             }, 250, 'swing');
         }
@@ -339,7 +389,12 @@ $(document).ready(function() {
     }
 
     function vagalumeHTML(track, attrClass) {
-        var html = '<div class="actions-content last-action animated lightSpeedIn">';
+        var html;
+        if (attrClass != null) {
+            html = '<div class="' + attrClass + '">';
+        } else {
+            html = '<div class="actions-content last-action animated lightSpeedIn">';
+        }
         html += '<div class="lyric">';
         html += track;
         html += '</div>';
