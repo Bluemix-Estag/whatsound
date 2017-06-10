@@ -16,6 +16,24 @@ var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
 // all environments
+app.enable('trust proxy');
+// app.use (function (req, res, next) {
+    // if (req.secure) {
+            // request was via https, so do no special handling
+            // next();
+    // } else {
+            // request was via http, so redirect to https
+            // res.redirect('https://' + req.headers.host + req.url);
+    // }
+// });
+function sslneed(req, res, next) {
+if (req.headers && req.headers.$wssc === "80") {
+return res.redirect('https://' + req.get('host') + req.url);
+}
+next();
+}
+app.use(sslneed);
+
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -34,6 +52,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.chat);
+app.get('/lounge', routes.lounge);
 
 // load local VCAP configuration
 var vcapLocal = null

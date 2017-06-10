@@ -38,8 +38,10 @@ $(document).ready(function() {
 
     /* INIT WEBSOCKET */
     var websocket = new WebSocket(WEBSOCKET_URL);
+    var timerId = 0;
     websocket.onopen = function(ev) {
         websocket.send('oi');
+        keepAlive();
 
         /*** FIX ME - DEV ONLY ***/
         // displayContentFromData('{"text": ["Lorem ipsum.", "Lorem ipsum dolor sit amet, porro.", "Lorem ipsum dolor sit amet, ut vim veniam recusabo partiendo. Ad etiam efficiantur ius. Vis tota instructior ea, wisi tibique delicata no sed. Ullum utroque denique ad vim."],"procedures": [{"name": "SHOW_TRACK","params": {"name": "Shape of You","artist": "Ed Sheeran","album": "Shape of You","uri": "spotify:track:0FE9t6xYkqWXU2ahLh6D8X","url":"https://open.spotify.com/track/0FE9t6xYkqWXU2ahLh6D8X","genres": ["pop"]}}]}');
@@ -65,11 +67,27 @@ $(document).ready(function() {
         //  });
     }
 
-    websocket.onclose = function(event) {}
+    websocket.onclose = function(event) {
+      cancelKeepAlive();
+    }
 
     websocket.onmessage = function(event) {
         console.log(event.data);
         displayContentFromData(event.data);
+    }
+
+    function keepAlive() {
+        var timeout = 20000;
+        if (websocket.readyState == websocket.OPEN) {
+            websocket.send('');
+        }
+        timerId = setTimeout(keepAlive, timeout);
+    }
+
+    function cancelKeepAlive() {
+        if (timerId) {
+            clearTimeout(timerId);
+        }
     }
 
     /* EVENTS */
@@ -101,7 +119,7 @@ $(document).ready(function() {
     });
 
     $(window).resize(function() {
-      $('#clip').contents().find('video').each(function() {
+        $('#clip').contents().find('video').each(function() {
             this.currentTime = 0;
             this.pause();
         });
@@ -311,7 +329,7 @@ $(document).ready(function() {
                     }
                 }
             });
-        }else {
+        } else {
             var actions = $('#actions');
             $(".actions-content").each(function(index, element) {
                 element = $(element);

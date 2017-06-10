@@ -1,0 +1,846 @@
+{
+	"songCounter": 0,
+	"ranking": [{
+			"track_name": "Sugar",
+			"votes": 5,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+					"nameUser": "Rafael_Moris",
+					"nameDisplay": "Rafael Moris",
+					"photo": "http://pbs.twimg.com/profile_images/2514906268/9hvj3p9vzw7a8xnjmahd_normal.jpeg",
+					"tweet": "#IBM100ANOS ... SUGAR",
+					"timeStamp": "1496847287590"
+				},
+				{
+					"nameUser": "Edison",
+					"photo": "url"
+				},
+				{
+					"nameUser": "r_castan",
+					"nameDisplay": "Ramon Castan Sutto",
+					"photo": "http://pbs.twimg.com/profile_images/872488000860585984/ny2tp0BK_normal.jpg",
+					"tweet": "#ibm100anos sugar",
+					"timeStamp": "1496854763123"
+				},
+				{
+					"nameUser": "Bruno_T_C",
+					"nameDisplay": "Nazaré da IBM",
+					"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+					"tweet": "#ibm100anos sugar",
+					"timeStamp": "1496854804852"
+				}
+			],
+			"uri": "spotify:track:2iuZJX9X9P0GKaE93xcPjk"
+		},
+		{
+			"track_name": "Summer",
+			"votes": 3,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+					"nameUser": "Bruno_T_C",
+					"nameDisplay": "Nazaré",
+					"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+					"tweet": "#ibm100anos summer",
+					"timeStamp": "1496846727813"
+				},
+				{
+					"nameUser": "Rafael_Moris",
+					"nameDisplay": "Rafael Moris",
+					"photo": "http://pbs.twimg.com/profile_images/2514906268/9hvj3p9vzw7a8xnjmahd_normal.jpeg",
+					"tweet": "#IBM100ANos Summer",
+					"timeStamp": "1496860553848"
+				},
+				{
+					"nameUser": "DevilSSSlayer",
+					"nameDisplay": "Pedro Micheletto",
+					"photo": "http://pbs.twimg.com/profile_images/867001398256443392/pBC0R2bN_normal.jpg",
+					"tweet": "#ibm100anos @watson100anos toca summer do calvin harris",
+					"timeStamp": "1496947126937"
+				}
+			],
+			"uri": "spotify:track:6YUTL4dYpB9xZO5qExPf05"
+		},
+		{
+			"track_name": "Shape of You",
+			"votes": 3,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+					"nameUser": "Bruno_T_C",
+					"nameDisplay": "Nazaré da IBM",
+					"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+					"tweet": "#ibm100anos shape of you",
+					"timeStamp": "1496851871314"
+				},
+				{
+					"nameUser": "edisoncuryn",
+					"nameDisplay": "Edison Cury Netp",
+					"photo": "http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+					"tweet": "#ibm100anos shape of you",
+					"timeStamp": "1496929981053"
+				},
+				{
+					"nameUser": "DevilSSSlayer",
+					"nameDisplay": "Pedro Micheletto",
+					"photo": "http://pbs.twimg.com/profile_images/867001398256443392/pBC0R2bN_normal.jpg",
+					"tweet": "#ibm100anos @watson100anos shape of you",
+					"timeStamp": "1496930069763"
+				}
+			],
+			"uri": "spotify:track:0FE9t6xYkqWXU2ahLh6D8X"
+		},
+		{
+			"track_name": "Sorry",
+			"votes": 3,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+					"nameUser": "Totem_IBM100anos_1497019104969",
+					"nameDisplay": "Totem IBM 100 anos",
+					"photo": "http://lh6.ggpht.com/_qUxAU04uRNA/TFw1gRtsSgI/AAAAAAAACYA/Xx35oYXb8ok/Facebook-monalisa.jpg",
+					"tweet": "#IBM100anos Sorry - Justin Bieber",
+					"timeStamp": 1497019104969
+				},
+				{
+					"nameUser": "Totem_IBM100anos_1497019363623",
+					"nameDisplay": "Totem IBM 100 anos",
+					"photo": "http://lh6.ggpht.com/_qUxAU04uRNA/TFw1gRtsSgI/AAAAAAAACYA/Xx35oYXb8ok/Facebook-monalisa.jpg",
+					"tweet": "#IBM100anos Sorry - Justin Bieber",
+					"timeStamp": "1497019363623"
+				},
+				{
+					"nameUser": "Totem_IBM100anos_1497019426518",
+					"nameDisplay": "Totem IBM 100 anos",
+					"photo": "http://lh4.ggpht.com/_qUxAU04uRNA/TFsP4bvzcMI/AAAAAAAACWI/g7kLDE3I67A/Facebook-spider-man-1.jpg",
+					"tweet": "#IBM100anos Sorry - Justin Bieber",
+					"timeStamp": "1497019426518"
+				}
+			],
+			"uri": "spotify:track:09CtPGIpYB4BrO8qb1RGsF"
+		},
+		{
+			"track_name": "Faded",
+			"votes": 2,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+					"nameUser": "Bruno_T_C",
+					"nameDisplay": "Nazaré",
+					"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+					"tweet": "#ibm100anos faded",
+					"timeStamp": "1496846681480"
+				},
+				{
+					"nameUser": "Rafael_Moris",
+					"nameDisplay": "Rafael Moris",
+					"photo": "http://pbs.twimg.com/profile_images/2514906268/9hvj3p9vzw7a8xnjmahd_normal.jpeg",
+					"tweet": "#IBM100Anos Faded",
+					"timeStamp": "1496859701121"
+				}
+			],
+			"uri": "spotify:track:7gHs73wELdeycvS48JfIos"
+		},
+		{
+			"track_name": "Banana Pancakes",
+			"votes": 2,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+					"nameUser": "Rafael_Moris",
+					"nameDisplay": "Rafael Moris",
+					"photo": "http://pbs.twimg.com/profile_images/2514906268/9hvj3p9vzw7a8xnjmahd_normal.jpeg",
+					"tweet": "Banana Pancakes",
+					"timeStamp": "1496857839051"
+				},
+				{
+					"nameUser": "Bruno_T_C",
+					"nameDisplay": "Nazaré da IBM",
+					"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+					"tweet": "#ibm100anos bora ouvir \"banana panckakes\" do jack... vamos agitar essa festa galerinha do mal, muash",
+					"timeStamp": "1496862680143"
+				}
+			],
+			"uri": "spotify:track:451GvHwY99NKV4zdKPRWmv"
+		},
+		{
+			"track_name": "Closer",
+			"votes": 2,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+					"nameUser": "Bruno_T_C",
+					"nameDisplay": "Nazaré da IBM",
+					"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+					"tweet": "#ibm100anos quero ouvir a musica \"closer\" do trevis",
+					"timeStamp": "1496860773629"
+				},
+				{
+					"nameUser": "Rafael_Moris",
+					"nameDisplay": "Rafael Moris",
+					"photo": "http://pbs.twimg.com/profile_images/2514906268/9hvj3p9vzw7a8xnjmahd_normal.jpeg",
+					"tweet": "#IBM100Anos \"closer\" do travis",
+					"timeStamp": "1496860857878"
+				}
+			],
+			"uri": "spotify:track:7BKLCZ1jbUBVqRi2FVlTVw"
+		},
+		{
+			"track_name": "Turn Down for What",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos turn down for what",
+				"timeStamp": "1496851643509"
+			}],
+			"uri": "spotify:track:67awxiNHNyjMXhVgsHuIrs"
+		},
+		{
+			"track_name": "R U Mine?",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos r u mine",
+				"timeStamp": "1496846772668"
+			}],
+			"uri": "spotify:track:2AT8iROs4FQueDv2c8q2KE"
+		},
+		{
+			"track_name": "Closer",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Rafael_Moris",
+				"nameDisplay": "Rafael Moris",
+				"photo": "http://pbs.twimg.com/profile_images/2514906268/9hvj3p9vzw7a8xnjmahd_normal.jpeg",
+				"tweet": "#IBM100anos Closer do Travis",
+				"timeStamp": "1496851944776"
+			}],
+			"uri": "spotify:track:56bIS0cm4jbeT0razOOb3u"
+		},
+		{
+			"track_name": "Let's Get It On",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "r_castan",
+				"nameDisplay": "Ramon Castan Sutto",
+				"photo": "http://pbs.twimg.com/profile_images/872488000860585984/ny2tp0BK_normal.jpg",
+				"tweet": "#ibm100anos bora ouvir sugar galera",
+				"timeStamp": "1496852756085"
+			}],
+			"uri": "spotify:track:0jHkgTtTaqg5LNCiYDQPUB"
+		},
+		{
+			"track_name": "Hotline Bling",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "r_castan",
+				"nameDisplay": "Ramon Castan Sutto",
+				"photo": "http://pbs.twimg.com/profile_images/872488000860585984/ny2tp0BK_normal.jpg",
+				"tweet": "#ibm100anos quero ouvir bling bling",
+				"timeStamp": "1496852888894"
+			}],
+			"uri": "spotify:track:0wwPcA6wtMf6HUMpIRdeP7"
+		},
+		{
+			"track_name": "In The End",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"name": "Edison",
+				"photo": "url"
+			}],
+			"uri": "spotify:track:321"
+		},
+		{
+			"track_name": "ANTHEM",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "r_castan",
+				"nameDisplay": "Ramon Castan Sutto",
+				"photo": "http://pbs.twimg.com/profile_images/872488000860585984/ny2tp0BK_normal.jpg",
+				"tweet": "#ibm100anos quero ouvir bling bling do ikon",
+				"timeStamp": "1496852939421"
+			}],
+			"uri": "spotify:track:1ZfWBrsF98WheiSfIA8XpA"
+		},
+		{
+			"track_name": "Two-Faced Mask",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Rafael_Moris",
+				"nameDisplay": "Rafael Moris",
+				"photo": "http://pbs.twimg.com/profile_images/2514906268/9hvj3p9vzw7a8xnjmahd_normal.jpeg",
+				"tweet": "#IBM100Anos Faced",
+				"timeStamp": "1496854825214"
+			}],
+			"uri": "spotify:track:0F06Es3B8Ndi2I6XuF0Hxc"
+		},
+		{
+			"track_name": "Hello",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos hello",
+				"timeStamp": "1496855351514"
+			}],
+			"uri": "spotify:track:0ENSn4fwAbCGeFGVUbXEU3"
+		},
+		{
+			"track_name": "No Soy Monedita de Oro - Mexican Mix",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos monedita",
+				"timeStamp": "1496856661937"
+			}],
+			"uri": "spotify:track:0YfxXeLYdxO986je0JsCGp"
+		},
+		{
+			"track_name": "Roar",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "roar",
+				"timeStamp": "1496857781046"
+			}],
+			"uri": "spotify:track:6F5c58TMEs1byxUstkzVeM"
+		},
+		{
+			"track_name": "Sing",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos sing",
+				"timeStamp": "1496846885897"
+			}],
+			"uri": "spotify:track:6K8qKeWo5MsFED7wCR6Kop"
+		},
+		{
+			"track_name": "Rude",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos eu quero a musica topster \"rude\" da jubileia",
+				"timeStamp": "1496858350122"
+			}],
+			"uri": "spotify:track:3tCwjWLicbjsMCvXhN0WOE"
+		},
+		{
+			"track_name": "Bring Back the Summer (feat. OLY)",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Rafael_Moris",
+				"nameDisplay": "Rafael Moris",
+				"photo": "http://pbs.twimg.com/profile_images/2514906268/9hvj3p9vzw7a8xnjmahd_normal.jpeg",
+				"tweet": "Borá ouvir \"Bring back the summer\" daquela mulher la... melhor de todas as vibes aqui no #IBM100ANOS",
+				"timeStamp": "1496858367143"
+			}],
+			"uri": "spotify:track:7JGqyqdzijtJeqVRhADFZd"
+		},
+		{
+			"track_name": "Do I Wanna Know?",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos artic monkeys",
+				"timeStamp": "1496859066941"
+			}],
+			"uri": "spotify:track:2UzMpPKPhbcC8RbsmuURAZ"
+		},
+		{
+			"track_name": "Tremor",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos quero ouvir a tremor",
+				"timeStamp": "1496860587092"
+			}],
+			"uri": "spotify:track:6AE0G24YXnDyEgE4L0efpB"
+		},
+		{
+			"track_name": "Party Rock Anthem",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos quero ouvir a anthem",
+				"timeStamp": "1496860614912"
+			}],
+			"uri": "spotify:track:2FA7ZSgIlY5LNmYj6XbXWy"
+		},
+		{
+			"track_name": "Fame And Fortune",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos quero ouvir anthem da icon",
+				"timeStamp": "1496860710584"
+			}],
+			"uri": "spotify:track:2JCTfoViYuYdxImHRUvhm2"
+		},
+		{
+			"track_name": "In The End",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos in the end",
+				"timeStamp": "1496845359867"
+			}],
+			"uri": "spotify:track:60a0Rd6pjrkxjPbaKzXjfq"
+		},
+		{
+			"track_name": "Animals",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos animals",
+				"timeStamp": "1496861284998"
+			}],
+			"uri": "spotify:track:2bL2gyO6kBdLkNSkxXNh6x"
+		},
+		{
+			"track_name": "Autismo - Techno Mix",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos adoro cachorro quente com mostarda \"madness\"",
+				"timeStamp": "1496861546167"
+			}],
+			"uri": "spotify:track:1WcBPKRA3NwqLTBk4R7yCa"
+		},
+		{
+			"track_name": "Supremacy",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos supremacy",
+				"timeStamp": "1496862888411"
+			}],
+			"uri": "spotify:track:40pPI2TbaYSZlKfV44HRjn"
+		},
+		{
+			"track_name": "Linda Voz (Olá)",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos ola",
+				"timeStamp": "1496924692880"
+			}],
+			"uri": "spotify:track:7MXeSAgdXXsi3BAnuOLcxb"
+		},
+		{
+			"track_name": "Amor Não Vai Faltar - Ao Vivo",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "edisoncuryn",
+				"nameDisplay": "Edison Cury Netp",
+				"photo": "http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+				"tweet": "#ibm100anos bruno se voce ver isso tira foto do log.",
+				"timeStamp": "1496925347934"
+			}],
+			"uri": "spotify:track:5JKBeWfvqBGM8WXXCwWS3L"
+		},
+		{
+			"track_name": "The Most",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos hey mama",
+				"timeStamp": "1496925534408"
+			}],
+			"uri": "spotify:track:4gDdwxVOs8cIFGkDRily4v"
+		},
+		{
+			"track_name": "Bom Dia - Acústico",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos #playlist bom dia",
+				"timeStamp": "1496925573997"
+			}],
+			"uri": "spotify:track:6bHwZKWvKv3MMXdQCpDrHh"
+		},
+		{
+			"track_name": "Sanfona Gaucha",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos #playlist .",
+				"timeStamp": "1496925669713"
+			}],
+			"uri": "spotify:track:5WuPujVXvzul7ql463Q2kt"
+		},
+		{
+			"track_name": "That's What I Like",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos #playlist bruno",
+				"timeStamp": "1496925945177"
+			}],
+			"uri": "spotify:track:0KKkJNfGyhkQ5aFogxQAPU"
+		},
+		{
+			"track_name": "Play Hard (feat. Ne-Yo & Akon)",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos play hard",
+				"timeStamp": "1496926359075"
+			}],
+			"uri": "spotify:track:2QD4C6RRHgRNRAyrfnoeAo"
+		},
+		{
+			"track_name": "Shed a Light",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos david guetta",
+				"timeStamp": "1496926418536"
+			}],
+			"uri": "spotify:track:1cG0umU5TKStygKsPFZ9pY"
+		},
+		{
+			"track_name": "In the Flesh?",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos the wall",
+				"timeStamp": "1496926491510"
+			}],
+			"uri": "spotify:track:24YmWQgunJGAU8El3ndkyn"
+		},
+		{
+			"track_name": "Cocaine",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos #theSTReam cocaine",
+				"timeStamp": "1496930258185"
+			}],
+			"uri": "spotify:track:3ykSdTGmYPFl8pDBXer1zG"
+		},
+		{
+			"track_name": "T.N.T.",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos #theSTReam TNT",
+				"timeStamp": "1496930484988"
+			}],
+			"uri": "spotify:track:7LRMbd3LEoV5wZJvXT1Lwb"
+		},
+		{
+			"track_name": "Diamonds",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos diamonds",
+				"timeStamp": "1496932957062"
+			}],
+			"uri": "spotify:track:7Kt59L2ZZGtOnIhvMwzG6f"
+		},
+		{
+			"track_name": "You Da One",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "bora ouvir \"you da one\" do jack... vamos agitar essa festa galerinha do mal, muash #ibm100anos",
+				"timeStamp": "1496933080236"
+			}],
+			"uri": "spotify:track:3Yt9lRtS5V4nbJnwcgFgvC"
+		},
+		{
+			"track_name": "I LUV IT",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos psy",
+				"timeStamp": "1496933150762"
+			}],
+			"uri": "spotify:track:4jP4FpFaw7PJ1PiIf3jcr7"
+		},
+		{
+			"track_name": "Papercut",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos hybrid theory .",
+				"timeStamp": "1496933194831"
+			}],
+			"uri": "spotify:track:1Vej0qeQ3ioKwpI6FUbRv1"
+		},
+		{
+			"track_name": "Stitches",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos #playlist  stitches",
+				"timeStamp": "1496933226514"
+			}],
+			"uri": "spotify:track:5jsw9uXEGuKyJzs0boZ1bT"
+		},
+		{
+			"track_name": "Mercy",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos mercy",
+				"timeStamp": "1496934582138"
+			}],
+			"uri": "spotify:track:0AS63m1wHv9n4VVRizK6Hc"
+		},
+		{
+			"track_name": "Madhouse",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "DevilSSSlayer",
+				"nameDisplay": "Pedro Micheletto",
+				"photo": "http://pbs.twimg.com/profile_images/867001398256443392/pBC0R2bN_normal.jpg",
+				"tweet": "#ibm100anos @watson100anos toca madhouse do anthrax",
+				"timeStamp": "1496946586644"
+			}],
+			"uri": "spotify:track:76BYv24CcZt2u94JRjmATX"
+		},
+		{
+			"track_name": "Feira de Acari",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos feira de acari mc batata",
+				"timeStamp": "1496846437430"
+			}],
+			"uri": "spotify:track:21I6RM9VPVL9DSeJbuBtHE"
+		},
+		{
+			"track_name": "Take Over Control (Dutch Edit) [feat. Eva Simons]",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Bruno_T_C",
+				"nameDisplay": "Nazaré da IBM",
+				"photo": "http://pbs.twimg.com/profile_images/871737087044845568/Eb2rmiL1_normal.jpg",
+				"tweet": "#ibm100anos take over control",
+				"timeStamp": "1497019516352"
+			}],
+			"uri": "spotify:track:4PsccFihLkDU7bNv26H0CI"
+		},
+		{
+			"track_name": "Sim ou não (Participação especial Maluma)",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Totem_IBM100anos_1497019752591",
+				"nameDisplay": "Totem IBM 100 anos",
+				"photo": "http://lh4.ggpht.com/_qUxAU04uRNA/TFsP4bvzcMI/AAAAAAAACWI/g7kLDE3I67A/Facebook-spider-man-1.jpg",
+				"tweet": "#IBM100anos Sim ou não (Participação especial Maluma) - Anitta",
+				"timeStamp": "1497019752591"
+			}],
+			"uri": "spotify:track:4FxumkF81ICxITeqxx4nK9"
+		},
+		{
+			"track_name": "In the End",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "bruno",
+				"nameDisplay": "bruno",
+				"photo": "bruno",
+				"tweet": "bruno",
+				"timeStamp": "1234324"
+			}],
+			"uri": "676183"
+		},
+		{
+			"track_name": "Drinkee",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Mordekarlos",
+				"nameDisplay": "Carlos Lobato",
+				"photo": "http://pbs.twimg.com/profile_images/814536758947958784/4L8X0Bpe_normal.jpg",
+				"tweet": "#ibm100anos drinkee",
+				"timeStamp": "1497031004621"
+			}],
+			"uri": 126264713
+		},
+		{
+			"track_name": "Freak On a Leash",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Mordekarlos",
+				"nameDisplay": "Carlos Lobato",
+				"photo": "http://pbs.twimg.com/profile_images/814536758947958784/4L8X0Bpe_normal.jpg",
+				"tweet": "#ibm100anos korn",
+				"timeStamp": "1497034213461"
+			}],
+			"uri": 134523750
+		},
+		{
+			"track_name": "Wait And Bleed",
+			"votes": 1,
+			"totalVotes": 5,
+			"counter": 5,
+			"voters": [{
+				"nameUser": "Mordekarlos",
+				"nameDisplay": "Carlos Lobato",
+				"photo": "http://pbs.twimg.com/profile_images/814536758947958784/4L8X0Bpe_normal.jpg",
+				"tweet": "#ibm100anos slipknot",
+				"timeStamp": "1497034307442"
+			}],
+			"uri": 4197811
+		}
+	],
+	"status": true
+}
