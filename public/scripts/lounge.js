@@ -3,13 +3,14 @@ $(document).ready(function() {
     let locationParams = getLocationParams()
 
     let MESSAGE_INVALID_URL = 'ALGO DE ERRADO NA URL NÃO ESTÁ CERTO!';
-    let URL_RESET_TRACK = 'http://whatsound-playlist.mybluemix.net/whatsound/api/v1/ranking/update?query=';
 
     let HASHTAG_IBM100ANOS = 'IBM100ANOS';
     let URL_100ANOS = 'https://whatsound-playlist.mybluemix.net/whatsound/api/v1/playlist/ranking';
+    let URL_RESET_TRACK_RANKING = 'http://whatsound-playlist.mybluemix.net/whatsound/api/v1/ranking/update?query=';
 
     let HASHTAG_THESTREAM = 'THESTREAM';
     let URL_THESTREAM = 'https://whatsound-playlist.mybluemix.net/whatsound/api/v1/setlist';
+    let URL_RESET_TRACK_SETLIST = 'http://whatsound-playlist.mybluemix.net/whatsound/api/v1/setlist/update?query=';
 
     var HASHTAG_PLAYLIST;
     if (locationParams.hashtag.toUpperCase() == HASHTAG_IBM100ANOS) {
@@ -18,6 +19,7 @@ $(document).ready(function() {
         HASHTAG_PLAYLIST = HASHTAG_THESTREAM;
     }
     let URL_PLAYLIST = HASHTAG_PLAYLIST == HASHTAG_IBM100ANOS ? URL_100ANOS : URL_THESTREAM;
+    let URL_RESET_TRACK = HASHTAG_PLAYLIST == HASHTAG_IBM100ANOS ? URL_RESET_TRACK_RANKING : URL_RESET_TRACK_SETLIST;
 
     let RANKING_TYPE = "RANKING";
     let SETLIST_TYPE = "SETLIST";
@@ -41,7 +43,7 @@ $(document).ready(function() {
     let PLACEHOLDER_IMG_TWITTER = 'http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png';
 
     function getTrackURL(id) {
-        return 'http://api.deezer.com/track/' + id + '?output=jsonp';
+        return 'https://musicdeezer-api.mybluemix.net/whatsound/api/v1/deezer/track/info/values?query=' + id;
     }
 
     /*** INTERFACE ***/
@@ -50,7 +52,7 @@ $(document).ready(function() {
     let playlistView = $('#playlist section');
     let maxHeight = ($('body').height() - 25 - playlistView.position().top - parseInt(playlistView.css('padding-top').replace('px', '')));
     if (maxHeight > $('body').height() - 50) {
-      maxHeight = $('body').height() - 50;
+        maxHeight = $('body').height() - 50;
     }
     playlistView.css('max-height', maxHeight + 'px');
 
@@ -161,32 +163,25 @@ $(document).ready(function() {
         addTrackWithId([nextTrack.id]);
         showNextTrackToId(nextTrack.id, false);
         resetTrack(nextTrack, function() {
-          refreshData();
-          startTimer();
+            refreshData();
+            startTimer();
         })
     }
 
     function resetTrack(track, completion) {
-      $.post(URL_RESET_TRACK + track.id, function(data) {
-        if (completion != null) {
-          completion();
-        }
-      });
+        $.post(URL_RESET_TRACK + track.id, function(data) {
+            if (completion != null) {
+                completion();
+            }
+        });
     }
 
     function getDataFromTrackId(id) {
-        $.ajax({
-            url: getTrackURL(id),
-            dataType: "jsonp",
-            data: {
-                format: "json"
-            },
-            success: function(data, status) {
-                $('<img src="' + data.album.cover_xl + '">').one('load', function() {
-                    changeBackgroundToURL(data.album.cover_xl);
-                    showBackground();
-                });
-            }
+        $.get(getTrackURL(id), function(data) {
+            $('<img src="' + data.album.cover_xl + '">').one('load', function() {
+                changeBackgroundToURL(data.album.cover_xl);
+                showBackground();
+            });
         });
     }
 
@@ -217,9 +212,9 @@ $(document).ready(function() {
             refreshData();
             startTimer();
         } else {
-          console.log('### update ###', new Date());
-          clearInterval(timer);
-          verifyData();
+            console.log('### update ###', new Date());
+            clearInterval(timer);
+            verifyData();
         }
     }
 
@@ -465,7 +460,7 @@ $(document).ready(function() {
                         break;
                     }
                     if (i == 10) {
-                      break;
+                        break;
                     }
                 }
                 startTimer();
@@ -505,9 +500,9 @@ $(document).ready(function() {
         tweets = tweets.sort(compareByTimestamp);
 
         if (tracks[0].votes == 0) {
-          tracks.sort(function() {
-              return .5 - Math.random();
-          });
+            tracks.sort(function() {
+                return .5 - Math.random();
+            });
         }
 
         if (firstRequest) {
@@ -517,7 +512,7 @@ $(document).ready(function() {
             currentTrack = tracks.shift();
             nextTrack = tracks.shift();
             resetTrack(currentTrack, function() {
-              resetTrack(nextTrack);
+                resetTrack(nextTrack);
             });
             addFirstTracksWithIds([currentTrack.id, nextTrack.id]);
             showNextTrackToId(nextTrack.id, true);
@@ -532,75 +527,71 @@ $(document).ready(function() {
     }
 
     function addFrameToIdAtTrackElement(id, element, completion) {
-        $.ajax({
-            url: getTrackURL(id),
-            dataType: "jsonp",
-            data: {
-                format: "json"
-            },
-            success: function(data, status) {
-                $('<img src="' + data.album.cover_medium + '">').one('load', function() {
+      $.get(getTrackURL(id), function(data) {
+        $('<img src="' + data.album.cover_medium + '">').one('load', function() {
 
-                    let title = data.title_short;
-                    let artist = data.artist.name;
+            let title = data.title_short;
+            let artist = data.artist.name;
 
-                    let trackImage = element.find('.track-frame .track-image').first();
-                    let trackData = element.find('.track-frame .track-data').first();
-                    $(this).appendTo(trackImage);
-                    trackData.append('<p class="track-title">' + title + '</p><p class="track-text">por</p><p class="track-artist">' + artist + '</p>');
+            let trackImage = element.find('.track-frame .track-image').first();
+            let trackData = element.find('.track-frame .track-data').first();
+            $(this).appendTo(trackImage);
+            trackData.append('<p class="track-title">' + title + '</p><p class="track-text">por</p><p class="track-artist">' + artist + '</p>');
 
-                    if (completion != null) {
-                        completion();
-                    }
-                });
+            if (completion != null) {
+                completion();
             }
         });
+      });
     }
 
     function updateFrameToIdAtTrackElement(id, element, completion) {
-        $.ajax({
-            url: getTrackURL(id),
-            dataType: "jsonp",
-            data: {
-                format: "json"
-            },
-            success: function(data, status) {
-                $('<img src="' + data.album.cover_medium + '">').one('load', function() {
+        $.get(getTrackURL(id), function(data) {
+          $('<img src="' + data.album.cover_medium + '">').one('load', function() {
 
-                    let title = data.title_short;
-                    let artist = data.artist.name;
+              let title = data.title_short;
+              let artist = data.artist.name;
 
-                    let trackImage = element.find('.track-frame .track-image').first();
-                    let image = element.find('.track-frame .track-image img').first();
-                    let trackData = element.find('.track-frame .track-data').first();
-                    let trackTweets = element.find('.track-frame .track-content .track-tweets').first();
+              let trackImage = element.find('.track-frame .track-image').first();
+              let image = element.find('.track-frame .track-image img').first();
+              let trackData = element.find('.track-frame .track-data').first();
+              let trackTweets = element.find('.track-frame .track-content .track-tweets').first();
 
-                    image.remove();
-                    $(this).appendTo(trackImage);
+              image.remove();
+              $(this).appendTo(trackImage);
 
-                    trackData.html('<p class="track-title">' + title + '</p><p class="track-text">por</p><p class="track-artist">' + artist + '</p>');
+              trackData.html('<p class="track-title">' + title + '</p><p class="track-text">por</p><p class="track-artist">' + artist + '</p>');
 
-                    var tweetsHTML = '';
-                    for (var j = 0; j < nextTrack.voters.length; j++) {
-                        var voter = nextTrack.voters[j];
-                        if (voter.photo.length > 0) {
-                            tweetsHTML += '<img src="' + voter.photo + '" title="@' + voter.nameUser + '" />';
-                        }
-                    }
-                    trackTweets.html(tweetsHTML);
+              var tweetsHTML = '';
+              for (var j = 0; j < nextTrack.voters.length; j++) {
+                  var voter = nextTrack.voters[j];
+                  if (voter.photo.length > 0) {
+                      tweetsHTML += '<img src="' + voter.photo + '" title="@' + voter.nameUser + '" />';
+                  }
+              }
+              trackTweets.html(tweetsHTML);
 
-                    $('#now-playing .playlist-track .track-frame .track-tweets img').on('error', function() {
-                        $(this).attr('src', PLACEHOLDER_IMG_TWITTER);
-                    })
+              $('#now-playing .playlist-track .track-frame .track-tweets img').on('error', function() {
+                  $(this).attr('src', PLACEHOLDER_IMG_TWITTER);
+              })
 
-                    addMarquee();
+              addMarquee();
 
-                    if (completion != null) {
-                        completion();
-                    }
-                });
-            }
+              if (completion != null) {
+                  completion();
+              }
+          });
         });
+        // $.ajax({
+        //     url: getTrackURL(id),
+        //     dataType: "jsonp",
+        //     data: {
+        //         format: "json"
+        //     },
+        //     success: function(data, status) {
+        //
+        //     }
+        // });
     }
 
     function showNextTrackToId(id, firstRequest) {
@@ -614,42 +605,35 @@ $(document).ready(function() {
     }
 
     function loadNextTrackDataToId(id) {
-        $.ajax({
-            url: getTrackURL(id),
-            dataType: "jsonp",
-            data: {
-                format: "json"
-            },
-            success: function(data, status) {
-                $('<img src="' + data.album.cover_medium + '">').one('load', function() {
-                    if (nextTrackView.find('*').length == 0) {
-                        var html = htmlToNextTrack(nextTrack);
-                        var trackObj = $(html);
-                        trackObj.appendTo(nextTrackView);
+        $.get(getTrackURL(id), function(data) {
+          $('<img src="' + data.album.cover_medium + '">').one('load', function() {
+              if (nextTrackView.find('*').length == 0) {
+                  var html = htmlToNextTrack(nextTrack);
+                  var trackObj = $(html);
+                  trackObj.appendTo(nextTrackView);
 
-                        let nextButton = $('#next-button');
-                        nextButton.click(function() {
-                            if (isSetlist()) {
-                                DZ.player.next(false);
-                                DZ.player.setMute();
-                                DZ.player.pause();
-                            } else {
-                                DZ.player.next();
-                            }
-                            popTrack();
-                            return false;
-                        });
+                  let nextButton = $('#next-button');
+                  nextButton.click(function() {
+                      if (isSetlist()) {
+                          DZ.player.next(false);
+                          DZ.player.setMute();
+                          DZ.player.pause();
+                      } else {
+                          DZ.player.next();
+                      }
+                      popTrack();
+                      return false;
+                  });
 
-                        addFrameToIdAtTrackElement(nextTrack.id, nextTrackView, showNextTrack());
+                  addFrameToIdAtTrackElement(nextTrack.id, nextTrackView, showNextTrack());
 
-                        $('#playlist .playlist-track .track-frame .track-tweets img').on('error', function() {
-                            $(this).attr('src', PLACEHOLDER_IMG_TWITTER);
-                        })
-                    } else {
-                        updateFrameToIdAtTrackElement(nextTrack.id, nextTrackView, showNextTrack());
-                    }
-                });
-            }
+                  $('#playlist .playlist-track .track-frame .track-tweets img').on('error', function() {
+                      $(this).attr('src', PLACEHOLDER_IMG_TWITTER);
+                  })
+              } else {
+                  updateFrameToIdAtTrackElement(nextTrack.id, nextTrackView, showNextTrack());
+              }
+          });
         });
     }
 
