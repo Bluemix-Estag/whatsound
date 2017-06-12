@@ -23,11 +23,14 @@ $(document).ready(function() {
 
     let RANKING_TYPE = "RANKING";
     let SETLIST_TYPE = "SETLIST";
+    let SPECTATE_TYPE = "SPECTATE";
     var PLAYLIST_TYPE;
     if (locationParams.type.toUpperCase() == RANKING_TYPE) {
         PLAYLIST_TYPE = RANKING_TYPE;
     } else if (locationParams.type.toUpperCase() == SETLIST_TYPE) {
         PLAYLIST_TYPE = SETLIST_TYPE;
+    } else if (locationParams.type.toUpperCase() == SPECTATE_TYPE) {
+        PLAYLIST_TYPE = SPECTATE_TYPE;
     }
 
     function isRanking() {
@@ -36,6 +39,10 @@ $(document).ready(function() {
 
     function isSetlist() {
         return PLAYLIST_TYPE == SETLIST_TYPE;
+    }
+
+    function isSpectate() {
+        return PLAYLIST_TYPE == SPECTATE_TYPE;
     }
 
     let APPID = '238762';
@@ -77,11 +84,12 @@ $(document).ready(function() {
     /*** TIMER ***/
     var firstUpdate = true;
     var timer;
-    var delay = 10;
+    var delay = 10; // Segundos
 
     /*** DATASOURCE ***/
     var updatingData = false;
     var firstRequest = true;
+    var trackList = new Array();
     var tracks;
     var tweets;
 
@@ -116,7 +124,7 @@ $(document).ready(function() {
     });
 
     DZ.Event.subscribe('player_play', function(evt_name) {
-        console.log("Player is playing");
+        // console.log("Player is playing");
         if (isSetlist()) {
             DZ.player.setMute();
             DZ.player.pause();
@@ -124,7 +132,7 @@ $(document).ready(function() {
     });
 
     DZ.Event.subscribe('current_track', function(track, evt_name) {
-        console.log("Currently playing track", track);
+        // console.log("Currently playing track", track);
 
         showPlayer();
         if (firstTrack) {
@@ -138,20 +146,20 @@ $(document).ready(function() {
     });
 
     DZ.Event.subscribe('track_end', function(track, evt_name) {
-        console.log("Currently playing track (track_end)", track);
-        popTrack();
+        // console.log("Currently playing track (track_end)", track);
+        if (isRanking()) {
+            popTrack();
+        }
     });
 
-    function addFirstTracksWithIds(ids) {
+    function playTrackWithId(id) {
         if (isSetlist()) {
-            DZ.player.playTracks(ids, false);
+            DZ.player.playTracks([id], false);
+        } else if (isSpectate()) {
+            DZ.player.playTracks([id], DZ.player.isPlaying());
         } else {
-            DZ.player.playTracks(ids);
+            DZ.player.playTracks([id]);
         }
-    }
-
-    function addTrackWithId(ids) {
-        DZ.player.addToQueue(ids);
     }
 
     function popTrack(completion) {
@@ -160,20 +168,28 @@ $(document).ready(function() {
         let track = tracks.shift();
         currentTrack = nextTrack;
         nextTrack = track;
-        addTrackWithId([nextTrack.id]);
-        showNextTrackToId(nextTrack.id, false);
-        resetTrack(nextTrack, function() {
+        if (currentTrack != null) {
+            playTrackWithId(currentTrack.id);
+            if (nextTrack != null) {
+                showNextTrackToId(nextTrack.id, false);
+                resetTrack(nextTrack, function() {
+                    refreshData();
+                    startTimer();
+                })
+            }
+        } else {
             refreshData();
-            startTimer();
-        })
+        }
     }
 
     function resetTrack(track, completion) {
-        $.post(URL_RESET_TRACK + track.id, function(data) {
-            if (completion != null) {
-                completion();
-            }
-        });
+        if (track != null && isSpectate() == false) {
+            $.post(URL_RESET_TRACK + track.id, function(data) {
+                if (completion != null) {
+                    completion();
+                }
+            });
+        }
     }
 
     function getDataFromTrackId(id) {
@@ -212,7 +228,6 @@ $(document).ready(function() {
             refreshData();
             startTimer();
         } else {
-            console.log('### update ###', new Date());
             clearInterval(timer);
             verifyData();
         }
@@ -220,6 +235,7 @@ $(document).ready(function() {
 
     function startTimer() {
         timer = setInterval(function() {
+            console.log('TIMER', new Date());
             update();
         }, delay * 1000);
     }
@@ -252,7 +268,6 @@ $(document).ready(function() {
         loungeView.html('');
         for (var i = 0; i < tweets.length; i++) {
             var tweet = tweets[i];
-            console.log(tweet);
             var html = '';
             html += '<div class="tweet">';
             html += '<img src="' + tweet.photo + '" />';
@@ -420,6 +435,7 @@ $(document).ready(function() {
             return;
         }
         updatingData = true;
+
         $('footer p').html(HASHTAG_PLAYLIST);
 
         $.getJSON(URL_PLAYLIST, function(data) {
@@ -451,16 +467,26 @@ $(document).ready(function() {
                     };
                     tempTracks.push(track);
                 }
-                tempTracks = tempTracks.sort(compareByVotes);
 
-                for (var i = 0; i < tempTracks.length; i++) {
-                    var track = tempTracks[i];
-                    if (track.id != tracks[i].id && track.id != currentTrack.id && track.id != nextTrack.id) {
-                        refreshData();
-                        break;
-                    }
-                    if (i == 10) {
-                        break;
+                tempTracks.sort(compareByVotes);
+
+                if (tempTracks[0] != null && tempTracks[0].votes == 0) {
+                    refreshData();
+                } else {
+                    for (var i = 0; i < tempTracks.length; i++) {
+                        var track = tempTracks[i];
+                        if (tracks[i] == null) {
+                          break;
+                        }
+                        if (track.id != tracks[i].id && (currentTrack != null && track.id != currentTrack.id) && (nextTrack != null && track.id != nextTrack.id)) {
+                            if (track.votes > 0) {
+                                refreshData();
+                                break;
+                            }
+                        }
+                        if (i == 10) {
+                            break;
+                        }
                     }
                 }
                 startTimer();
@@ -496,91 +522,124 @@ $(document).ready(function() {
                 tweets.push(voter);
             }
         }
-        tracks = tracks.sort(compareByVotes);
-        tweets = tweets.sort(compareByTimestamp);
 
-        if (tracks[0].votes == 0) {
-            tracks.sort(function() {
-                return .5 - Math.random();
-            });
+        if (isSpectate()) {
+            tracks.sort(compareByCouter);
+        } else {
+            tracks.sort(compareByVotes);
+            if (tracks[0] != null && tracks[0].votes == 0) {
+                tracks.sort(function() {
+                    return .5 - Math.random();
+                });
+            }
         }
+        tweets.sort(compareByTimestamp);
 
         if (firstRequest) {
             firstRequest = false;
             updatingData = false;
 
-            currentTrack = tracks.shift();
-            nextTrack = tracks.shift();
-            resetTrack(currentTrack, function() {
-                resetTrack(nextTrack);
-            });
-            addFirstTracksWithIds([currentTrack.id, nextTrack.id]);
-            showNextTrackToId(nextTrack.id, true);
-            updateInterface();
+            if (isSpectate()) {
+                nextTrack = tracks.shift();
+                currentTrack = tracks.shift();
+                console.log(currentTrack.name);
+                tracks.sort(compareByVotes);
+            } else {
+                currentTrack = tracks.shift();
+                nextTrack = tracks.shift();
+            }
+            if (currentTrack != null) {
+                resetTrack(currentTrack, function() {
+                    resetTrack(nextTrack);
+                });
+                playTrackWithId(currentTrack.id);
+                if (nextTrack != null) {
+                    showNextTrackToId(nextTrack.id, true);
+                }
+                updateInterface();
+            }
         } else {
             updatingData = false;
             hideLounge();
             hidePlaylist(function() {
+                if (isSpectate()) {
+                    nextTrack = tracks.shift();
+                    currentTrack = tracks.shift();
+                    tracks.sort(compareByVotes);
+                    if (nextTrack != null) {
+                        if (parseInt($('#now-playing #next-track .playlist-track').attr('data-id')) != nextTrack.id) {
+                            if (currentTrack != null) {
+                                playTrackWithId(currentTrack.id);
+                            }
+                            showNextTrackToId(nextTrack.id, false);
+                        }
+                    }
+                }
                 updateInterface();
             });
         }
     }
 
     function addFrameToIdAtTrackElement(id, element, completion) {
-      $.get(getTrackURL(id), function(data) {
-        $('<img src="' + data.album.cover_medium + '">').one('load', function() {
+        $.get(getTrackURL(id), function(data) {
+            $('<img src="' + data.album.cover_medium + '">').one('load', function() {
 
-            let title = data.title_short;
-            let artist = data.artist.name;
+                let title = data.title_short;
+                let artist = data.artist.name;
 
-            let trackImage = element.find('.track-frame .track-image').first();
-            let trackData = element.find('.track-frame .track-data').first();
-            $(this).appendTo(trackImage);
-            trackData.append('<p class="track-title">' + title + '</p><p class="track-text">por</p><p class="track-artist">' + artist + '</p>');
+                let trackImage = element.find('.track-frame .track-image').first();
+                let trackData = element.find('.track-frame .track-data').first();
+                $(this).appendTo(trackImage);
+                trackData.append('<p class="track-title">' + title + '</p><p class="track-text">por</p><p class="track-artist">' + artist + '</p>');
 
-            if (completion != null) {
-                completion();
-            }
+                if (completion != null) {
+                    completion();
+                }
+            });
         });
-      });
     }
 
     function updateFrameToIdAtTrackElement(id, element, completion) {
         $.get(getTrackURL(id), function(data) {
-          $('<img src="' + data.album.cover_medium + '">').one('load', function() {
+            var album = data.album;
+            if (album != null) {
+                $('<img src="' + album.cover_medium + '">').one('load', function() {
 
-              let title = data.title_short;
-              let artist = data.artist.name;
+                    let title = data.title_short;
+                    let artist = data.artist.name;
 
-              let trackImage = element.find('.track-frame .track-image').first();
-              let image = element.find('.track-frame .track-image img').first();
-              let trackData = element.find('.track-frame .track-data').first();
-              let trackTweets = element.find('.track-frame .track-content .track-tweets').first();
+                    let trackImage = element.find('.track-frame .track-image').first();
+                    let image = element.find('.track-frame .track-image img').first();
+                    let trackData = element.find('.track-frame .track-data').first();
+                    let trackTweets = element.find('.track-frame .track-content .track-tweets').first();
 
-              image.remove();
-              $(this).appendTo(trackImage);
+                    element.find('.playlist-track').first().attr('data-id', data.id);
 
-              trackData.html('<p class="track-title">' + title + '</p><p class="track-text">por</p><p class="track-artist">' + artist + '</p>');
+                    image.remove();
+                    $(this).appendTo(trackImage);
 
-              var tweetsHTML = '';
-              for (var j = 0; j < nextTrack.voters.length; j++) {
-                  var voter = nextTrack.voters[j];
-                  if (voter.photo.length > 0) {
-                      tweetsHTML += '<img src="' + voter.photo + '" title="@' + voter.nameUser + '" />';
-                  }
-              }
-              trackTweets.html(tweetsHTML);
+                    trackData.html('<p class="track-title">' + title + '</p><p class="track-text">por</p><p class="track-artist">' + artist + '</p>');
 
-              $('#now-playing .playlist-track .track-frame .track-tweets img').on('error', function() {
-                  $(this).attr('src', PLACEHOLDER_IMG_TWITTER);
-              })
+                    var tweetsHTML = '';
+                    for (var j = 0; j < nextTrack.voters.length; j++) {
+                        var voter = nextTrack.voters[j];
+                        if (voter.photo.length > 0) {
+                            tweetsHTML += '<img src="' + voter.photo + '" title="@' + voter.nameUser + '" />';
+                        }
+                    }
+                    trackTweets.html(tweetsHTML);
 
-              addMarquee();
+                    $('#now-playing .playlist-track .track-frame .track-tweets img').on('error', function() {
+                        $(this).attr('src', PLACEHOLDER_IMG_TWITTER);
+                    })
 
-              if (completion != null) {
-                  completion();
-              }
-          });
+                    addMarquee();
+
+                    if (completion != null) {
+                        completion();
+                    }
+                });
+            }
         });
         // $.ajax({
         //     url: getTrackURL(id),
@@ -606,34 +665,27 @@ $(document).ready(function() {
 
     function loadNextTrackDataToId(id) {
         $.get(getTrackURL(id), function(data) {
-          $('<img src="' + data.album.cover_medium + '">').one('load', function() {
-              if (nextTrackView.find('*').length == 0) {
-                  var html = htmlToNextTrack(nextTrack);
-                  var trackObj = $(html);
-                  trackObj.appendTo(nextTrackView);
+            $('<img src="' + data.album.cover_medium + '">').one('load', function() {
+                if (nextTrackView.find('*').length == 0) {
+                    var html = htmlToNextTrack(nextTrack);
+                    var trackObj = $(html);
+                    trackObj.appendTo(nextTrackView);
 
-                  let nextButton = $('#next-button');
-                  nextButton.click(function() {
-                      if (isSetlist()) {
-                          DZ.player.next(false);
-                          DZ.player.setMute();
-                          DZ.player.pause();
-                      } else {
-                          DZ.player.next();
-                      }
-                      popTrack();
-                      return false;
-                  });
+                    let nextButton = $('#next-button');
+                    nextButton.click(function() {
+                        popTrack();
+                        return false;
+                    });
 
-                  addFrameToIdAtTrackElement(nextTrack.id, nextTrackView, showNextTrack());
+                    addFrameToIdAtTrackElement(nextTrack.id, nextTrackView, showNextTrack());
 
-                  $('#playlist .playlist-track .track-frame .track-tweets img').on('error', function() {
-                      $(this).attr('src', PLACEHOLDER_IMG_TWITTER);
-                  })
-              } else {
-                  updateFrameToIdAtTrackElement(nextTrack.id, nextTrackView, showNextTrack());
-              }
-          });
+                    $('#playlist .playlist-track .track-frame .track-tweets img').on('error', function() {
+                        $(this).attr('src', PLACEHOLDER_IMG_TWITTER);
+                    })
+                } else {
+                    updateFrameToIdAtTrackElement(nextTrack.id, nextTrackView, showNextTrack());
+                }
+            });
         });
     }
 
@@ -666,6 +718,7 @@ $(document).ready(function() {
     }
 
     function htmlToNextTrack(track) {
+        let disabled = isSpectate() ? 'disabled' : '';
         var html = '';
         html += '<div class="playlist-track" data-id="' + track.id + '">';
         html += '<div class="votes">';
@@ -673,7 +726,7 @@ $(document).ready(function() {
         html += '</div>';
         html += '<div class="track-frame">';
         html += '<div class="track-image">';
-        html += '<button id="next-button" type="button" title="Seguinte" aria-label="Seguinte"><svg class="svg-icon svg-icon-next" viewBox="0 0 12 12" aria-hidden="true" height="20" width="20"><g><path d="M11,0.50035 L11,11.4996537 C11,11.7759879 10.768066,12 10.5,12 C10.223858,12 10,11.7710004 10,11.4996537 L10,7.08139 L1.5623435,11.9492662 C1.3123668,12.0934835 1,11.9130717 1,11.6244769 L1,0.37552 C1,0.08693 1.3123668,-0.09348 1.5623435,0.05073 L10,4.918612 L10,0.50035 C10,0.22401 10.231934,3.88578059e-16 10.5,3.88578059e-16 C10.776142,3.88578059e-16 11,0.229 11,0.50035 L11,0.50035 Z"></path></g></svg></button>';
+        html += '<button ' + disabled + ' id="next-button" type="button" title="Seguinte" aria-label="Seguinte"><svg class="svg-icon svg-icon-next" viewBox="0 0 12 12" aria-hidden="true" height="20" width="20"><g><path d="M11,0.50035 L11,11.4996537 C11,11.7759879 10.768066,12 10.5,12 C10.223858,12 10,11.7710004 10,11.4996537 L10,7.08139 L1.5623435,11.9492662 C1.3123668,12.0934835 1,11.9130717 1,11.6244769 L1,0.37552 C1,0.08693 1.3123668,-0.09348 1.5623435,0.05073 L10,4.918612 L10,0.50035 C10,0.22401 10.231934,3.88578059e-16 10.5,3.88578059e-16 C10.776142,3.88578059e-16 11,0.229 11,0.50035 L11,0.50035 Z"></path></g></svg></button>';
         html += '</div>';
         html += '<div class="track-content">';
         html += '<div class="track-data">';
@@ -703,7 +756,7 @@ $(document).ready(function() {
     }
 
     function compareByCouter(a, b) {
-        return (a.counter - b.counter);
+        return (b.counter - a.counter);
     }
 
     function compareByTimestamp(a, b) {
